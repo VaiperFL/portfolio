@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin Leguizamon - Portfolio</title>
+    
+    <!-- Meta tags -->
+    <meta name="description" content="Portfolio de Kevin Leguizamon.">
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Iconos Phosphor -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        bg: '#020410', 
+                        primary: '#2563eb',
+                        glow: '#3b82f6',
+                        cardDark: '#050b1e',
+                        cardBorder: 'rgba(59, 130, 246, 0.2)',
+                    },
+                    backgroundImage: {
+                        'beam-gradient': 'linear-gradient(to bottom, rgba(59, 130, 246, 0.8), transparent)',
+                        'stripe-pattern': 'repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 8px)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #020410;
+            color: white;
+            overflow-x: hidden; 
+        }
+
+        /* Efecto de Arco Azul Brillante con Animación */
+        .glow-arc {
+            position: absolute;
+            top: -150px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120vw;
+            height: 600px;
+            background: radial-gradient(50% 50% at 50% 50%, rgba(37, 99, 235, 0.25) 0%, rgba(2, 4, 16, 0) 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(60px);
+            animation: breathe 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes breathe {
+            0% { opacity: 0.8; transform: translateX(-50%) scale(1); }
+            100% { opacity: 1; transform: translateX(-50%) scale(1.05); }
+        }
+
+        /* Scrollbar oculta */
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Animaciones Hover Mejoradas */
+        .project-card, .feature-card, .tool-card, .recent-project-card, .stat-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .project-card:hover, .feature-card:hover, .tool-card:hover, .recent-project-card:hover, .stat-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(59, 130, 246, 0.6);
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
+        }
+        
+        /* Navbar flotante */
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .nav-glass:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Rayos decorativos (Beams) con Animación */
+        .beam {
+            position: absolute;
+            width: 8px;
+            height: 150px;
+            background: linear-gradient(180deg, #3b82f6 0%, rgba(59,130,246,0) 100%);
+            opacity: 0.6;
+            filter: blur(4px);
+            border-radius: 99px;
+            animation: beamFloat 5s ease-in-out infinite;
+        }
+        @keyframes beamFloat {
+            0%, 100% { transform: translateY(0) rotate(var(--rotation)); }
+            50% { transform: translateY(-15px) rotate(var(--rotation)); }
+        }
+        .beam-left {
+            top: 0;
+            left: 20%;
+            --rotation: -30deg;
+            transform: rotate(-30deg);
+        }
+        .beam-right {
+            top: 0;
+            right: 20%;
+            --rotation: 30deg;
+            transform: rotate(30deg);
+            animation-delay: 2.5s;
+        }
+
+        /* CLASES PARA SCROLL REVEAL (JS Triggered) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger delays for grids */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        
+        /* Gráfico animado CSS */
+        .chart-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 2s ease-out forwards;
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: 0; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col relative pb-0">
+
+    <!-- Efecto de fondo (El arco azul vivo) -->
+    <div class="glow-arc"></div>
+
+    <!-- Navbar -->
+    <nav class="relative z-50 w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between reveal active">
+        <div class="flex items-center gap-2 font-bold text-xl tracking-tight cursor-pointer hover:opacity-80 transition-opacity">
+            <span class="text-white">Leguizamon Kevin</span>
+        </div>
+
+        <div class="hidden md:flex items-center gap-1 nav-glass rounded-full px-2 py-1.5">
+            <a href="#" class="px-4 py-2 text-sm text-white bg-white/10 rounded-full font-medium transition-all hover:scale-105">Inicio</a>
+            <a href="/trabajos.html" class="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors">Trabajos</a>
+                 </div>
+
+        <a href="contacto.html" class="hidden md:block bg-primary hover:bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all shadow-[0_0_15px_rgba(37,99,235,0.5)] hover:shadow-[0_0_25px_rgba(37,99,235,0.7)] hover:-translate-y-0.5">
+            Contacto
+        </a>
+
+        <button class="md:hidden text-2xl text-white">
+            <i class="ph ph-list"></i>
+        </button>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="relative z-10 flex-grow flex flex-col items-center pt-16 md:pt-24 w-full">
+        
+        <!-- Hero Section -->
+        <div class="mb-8 reveal active delay-100">
+            <a href="#" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-gray-300 hover:bg-white/10 transition-colors backdrop-blur-sm group">
+                Diseño y contenido digital orientado a resultados
+                <i class="ph ph-arrow-right text-primary group-hover:translate-x-1 transition-transform"></i>
+            </a>
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 text-center tracking-tight leading-tight reveal active delay-200">
+            Kevin Leguizamon
+        </h1>
+
+        <div class="max-w-4xl mx-auto px-6 text-center mb-20 reveal active delay-300">
+            <p class="text-gray-400 text-sm md:text-base leading-relaxed font-light tracking-wide">
+                Programador <span class="mx-1 text-gray-600">|</span> 
+                Qa Tester <span class="mx-1 text-gray-600">|</span> 
+                Edición audiovisual <span class="mx-1 text-gray-600">|</span> 
+                Marketing <span class="mx-1 text-gray-600">|</span> 
+                Ilustración y Diseño grafico <span class="mx-1 text-gray-600">|</span> 
+                <br class="hidden md:block" />
+                Animador digital <span class="mx-1 text-gray-600">|</span> 
+                Modelador 3D/2D <span class="mx-1 text-gray-600">|</span> 
+                Community Manager <span class="mx-1 text-gray-600">|</span> 
+                UX/UI
+            </p>
+        </div>
+
+        <!-- Carrusel de Proyectos -->
+        <div class="w-full max-w-[1400px] mx-auto px-4 md:px-8 pb-20 reveal">
+            <div class="flex gap-6 overflow-x-auto hide-scroll pb-10 snap-x">
+                
+                <!-- Proyecto 1 (Wanderly) -->
+                <div class="min-w-[300px] md:min-w-[400px] snap-center">
+                    <div class="project-card group relative bg-[#0a0c1a] border border-white/5 rounded-2xl overflow-hidden aspect-[4/3] cursor-pointer">
+                        <img src="/imagenes/41 (2).jpg" 
+                             alt="Mineral Bank" 
+                             class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+                        <div class="absolute bottom-4 left-4 right-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                            <span class="text-xs font-medium text-gray-400 mb-1 block">Diseño y desarrollo web</span>
+                            <h3 class="text-lg font-semibold text-white">Mineral Bank</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2 (Waitlist App Mobile) -->
+                <div class="min-w-[280px] md:min-w-[320px] snap-center">
+                    <div class="project-card group relative bg-[#0a0c1a] border border-white/5 rounded-2xl overflow-hidden aspect-[9/16] md:aspect-[3/4] cursor-pointer">
+                        <img src="imagenes/Captura de pantalla 2025-12-05 130840.png" 
+                             alt="Aprendika" 
+                             class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105">
+                         <div class="absolute bottom-4 left-4 right-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                            <span class="text-xs font-medium text-gray-400 mb-1 block">Landing page</span>
+                            <h3 class="text-lg font-semibold text-white">Aprendika</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 3 (Regulate) -->
+                <div class="min-w-[300px] md:min-w-[450px] snap-center">
+                    <div class="project-card group relative bg-[#0a0c1a] border border-white/5 rounded-2xl overflow-hidden aspect-[4/3] cursor-pointer">
+                        <img src="imagenes/project1-09.jpg" 
+                             alt="Regulate Project" 
+                             class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105">
+                        <div class="absolute bottom-4 left-4 right-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                            <span class="text-xs font-medium text-gray-400 mb-1 block">Community Manager</span>
+                            <h3 class="text-lg font-semibold text-white">Natalia Favre Propiedades
+</h3>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Proyecto 4 (Appit) -->
+                 <div class="min-w-[280px] md:min-w-[320px] snap-center">
+                    <div class="project-card group relative bg-[#0a0c1a] border border-white/5 rounded-2xl overflow-hidden aspect-[9/16] md:aspect-[3/4] cursor-pointer">
+                        <img src="imagenes/project1-05.jpg" 
+                             alt="Appit Social" 
+                             class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105">
+                        <div class="absolute bottom-4 left-4 right-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                            <span class="text-xs font-medium text-gray-400 mb-1 block">Modelos 3D Fotorrealistas</span>
+                            <h3 class="text-lg font-semibold text-white">Freelancer</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SECCIÓN: Soluciones digitales integrales -->
+        <section class="w-full max-w-7xl mx-auto px-6 mb-224 reveal">
+            <div class="relative flex items-center justify-center mb-12">
+                <div class="absolute inset-0 flex items-center" aria-hidden="true"><div class="w-full border-t border-white/10"></div></div>
+                <div class="relative flex justify-center bg-[#020410] px-6"><span class="text-lg font-medium text-gray-200">Soluciones digitales integrales</span></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+            </div>
+        </section>
+
+        <!-- SECCIÓN: Mi Enfoque -->
+        <section class="w-full max-w-7xl mx-auto px-6 mb-32 reveal">
+            <div class="relative w-full rounded-3xl border border-white/10 overflow-hidden bg-[#030614] py-20 px-6 text-center hover:border-blue-500/30 transition-colors duration-500">
+                <div class="absolute inset-0 stars-bg pointer-events-none animate-pulse-slow"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] bg-blue-600/10 blur-[80px] rounded-full pointer-events-none"></div>
+                <div class="relative z-10 max-w-4xl mx-auto">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">Mi enfoque es crear soluciones digitales que atraen, retienen y convierten.</h2>
+                    <p class="text-gray-400 text-base md:text-lg max-w-3xl mx-auto">Trabajo el diseño, el contenido, el marketing y la automatización de forma integrada, con una mirada estratégica orientada a resultados.</p>
+               
+                 </section>
+
+        <!-- SECCIÓN: Why Arise Stands Out -->
+        <section class="relative w-full max-w-7xl mx-auto px-6 mb-32 flex flex-col items-center reveal">
+            <div class="beam beam-left"></div>
+            <div class="beam beam-right"></div>
+            <div class="text-center mb-16 relative z-10">
+                <div class="inline-block px-4 py-1.5 rounded-full bg-[#0d1226] border border-blue-900/50 text-xs font-medium text-blue-400 mb-6 shadow-[0_0_15px_rgba(59,130,246,0.2)] animate-pulse">MARKETING • DISEÑO • TECNOLOGÍA</div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4"> VALOR DIFERENCIAL
+</h2>
+                <p class="text-gray-400 text-sm md:text-base max-w-xl mx-auto">No contratas solo un creativo. Contratas un sistema integral de estrategia, tecnología y diseño pensado para escalar tu factura.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full mb-12">
+                 <!-- Features (Iteradas para ahorrar espacio visual, todas con animación) -->
+                <div class="feature-card bg-cardDark border border-cardBorder rounded-2xl p-6 relative group">
+                    <div class="mb-4 text-blue-500 group-hover:scale-110 transition-transform"><i class="ph-fill ph-star text-3xl"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2"> Diseños</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+Diseño, contenido audiovisual, marketing y automatización pensados como un sistema, no como piezas aisladas.</p>
+                </div>
+                <!-- ... resto de cards con clases feature-card y delay-* ... -->
+                <div class="feature-card bg-cardDark border border-cardBorder rounded-2xl p-6 relative group delay-100">
+                    <div class="mb-4 text-blue-500 group-hover:scale-110 transition-transform"><i class="ph-fill ph-users text-3xl"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Performance y conversión</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Diseño pensando en tu comunidad. Mi experiencia demostrada aumentando seguidores (+25%) y fidelizando clientes asegura que cada acción conecte realmente con las personas.</p>
+                </div>
+                 <div class="feature-card bg-cardDark border border-cardBorder rounded-2xl p-6 relative group delay-200">
+                    <div class="mb-4 text-blue-500 group-hover:scale-110 transition-transform"><i class="ph-fill ph-medal text-3xl"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2"> Performance y conversión</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Contenido, anuncios y experiencias digitales optimizadas para captar atención y generar resultados reales.
+                </div>
+                 <div class="feature-card bg-cardDark border border-cardBorder rounded-2xl p-6 relative group">
+                    <div class="mb-4 text-blue-500 group-hover:scale-110 transition-transform"><i class="ph-fill ph-hourglass text-3xl"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2"> Entrega Eficiente </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Respeto absoluto por tus tiempos. Utilizo automatización y gestión ágil para cumplir plazos estrictos sin comprometer la calidad, garantizando entregas puntuales en cada etapa.</p>
+                </div>
+                 <div class="feature-card bg-cardDark border border-cardBorder rounded-2xl p-6 relative group delay-100">
+                    <div class="mb-4 text-blue-500 group-hover:scale-110 transition-transform"><i class="ph-fill ph-squares-four text-3xl"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Soluciones Adaptables</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Versatilidad técnica total. Creo contenido que se ajusta a cualquier formato: desde desarrollo web responsive y apps, hasta piezas optimizadas para redes sociales y publicidad digital.</p>
+                </div>
+                 <div class="feature-card bg-cardDark border border-cardBorder rounded-2xl p-6 relative group delay-200">
+                    <div class="mb-4 text-blue-500 group-hover:scale-110 transition-transform"><i class="ph-fill ph-broadcast text-3xl"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Comunicación Transparente</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Conexión clara y constante. Experiencia sólida trabajando remotamente con clientes internacionales (EE.UU. y Latam), reportes claros y visibilidad total del proyecto.</p>
+                </div>
+            </div>
+        </section>
+    
+
+
+
+   
+        <!-- ======================================================= -->   
+
+                    <!-- SECCIÓN: Explore Our Recent Projects -->
+                    <section class="w-full max-w-7xl mx-auto px-6 mb-32 flex flex-col items-center reveal">
+                        <div class="text-center mb-16">
+                            <div class="inline-block px-4 py-1.5 rounded-full bg-[#0d1226] border border-blue-900/50 text-xs font-medium text-blue-400 mb-6">PORTFOLIO</div>
+                            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Casos de Éxito y Proyectos Recientes</h2>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mb-12">
+                            <!-- Projects (iguales al original) -->
+                            <div class="recent-project-card group cursor-pointer hover:scale-[1.02] transition-transform duration-500">
+                                <div class="rounded-2xl overflow-hidden border border-white/10 mb-6 aspect-[4/3] relative">
+                                    <img src="imagenes/2 (2).jpg" alt="Clever SaaS" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                                </div>
+                                <div class="flex items-center gap-3 mb-2"><h3 class="text-xl font-bold text-white">Campaña Educativa Internacional (USA)</h3><span class="px-2 py-1 bg-[#1a1f36] text-xs font-medium text-gray-400 rounded border border-white/5">Aprendika</span></div>
+                                <p class="text-gray-400 text-sm leading-relaxed">American Elite School.
+            Diseño integral de piezas publicitarias</p>
+                            </div>
+                            <div class="recent-project-card group cursor-pointer hover:scale-[1.02] transition-transform duration-500 delay-100">
+                                <div class="rounded-2xl overflow-hidden border border-white/10 mb-6 aspect-[4/3] relative">
+                                    <img src="imagenes/project1-09.jpg" alt="Genius SaaS" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                                </div>
+                                <div class="flex items-center gap-3 mb-2"><h3 class="text-xl font-bold text-white">Rebranding & Community Manager 
+            </h3><span class="px-2 py-1 bg-[#1a1f36] text-xs font-medium text-gray-400 rounded border border-white/5">Natalia Favre </span></div>
+                                <p class="text-gray-400 text-sm leading-relaxed">Estrategia de contenidos y rediseño visual que transformó la presencia digital de la marca.</p>
+                            </div>
+                            <div class="recent-project-card group cursor-pointer hover:scale-[1.02] transition-transform duration-500">
+                                <div class="rounded-2xl overflow-hidden border border-white/10 mb-6 aspect-[4/3] relative">
+                                    <img src="imagenes/imagenes-12.jpg" alt="Sap SaaS" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                                </div>
+                                <div class="flex items-center gap-3 mb-2"><h3 class="text-xl font-bold text-white">Landing Page</h3><span class="px-2 py-1 bg-[#1a1f36] text-xs font-medium text-gray-400 rounded border border-white/5">Dr Edmundo Velasco</span></div>
+                                <p class="text-gray-400 text-sm leading-relaxed">Diseño integral de pagina para venta</p>
+                            </div>
+                            <div class="recent-project-card group cursor-pointer hover:scale-[1.02] transition-transform duration-500 delay-100">
+                                <div class="rounded-2xl overflow-hidden border border-white/10 mb-6 aspect-[4/3] relative">
+                                    <img src="imagenes/project1-07 - copia.jpg" alt="Waitlisty" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                                </div>
+                                <div class="flex items-center gap-3 mb-2"><h3 class="text-xl font-bold text-white">Modelos 3D Fotorrealistas </h3><span class="px-2 py-1 bg-[#1a1f36] text-xs font-medium text-gray-400 rounded border border-white/5">Freelancer
+            </span></div>
+                                <p class="text-gray-400 text-sm leading-relaxed">Escenas y Personajes Fotorrealistas en 3D</p>
+                            </div>
+                        </div>
+                        <a href="trabajos.html" class="inline-flex items-center px-6 py-2.5 rounded-full border border-white/10 bg-[#0a0c1a] text-sm text-white font-medium hover:bg-white/5 transition-colors hover:scale-105">Ver más <i class="ph-bold ph-arrow-right ml-2"></i></a>
+                    </section>
+
+
+
+
+
+
+        <!-- ======================================================= -->
+        <!-- SECCIÓN SOBRE MÍ (ACTUALIZADA) -->
+        <!-- ======================================================= -->
+        <section class="w-full max-w-7xl mx-auto px-6 mb-32 flex flex-col lg:flex-row gap-16 items-center reveal" id="about">
+            
+            <!-- COLUMNA IZQUIERDA: IMAGEN -->
+            <div class="w-full lg:w-1/2 relative group">
+                <!-- Marco de Imagen -->
+                <div class="rounded-3xl overflow-hidden border border-white/10 transition-transform duration-500 group-hover:scale-[1.01] relative shadow-2xl shadow-blue-900/10">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#020410] via-transparent to-transparent opacity-40 z-10"></div>
+                    <img src="imagenes/1.jpeg" alt="Kevin Leguizamon" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                </div>
+                
+                <!-- Badge Flotante -->
+                <div class="absolute -bottom-6 -right-6 bg-[#0a1025] border border-white/10 p-5 rounded-2xl shadow-xl z-20 hidden md:flex items-center gap-4 animate-float">
+                    <div class="w-12 h-12 rounded-full bg-blue-600/20 flex items-center justify-center text-blue-400">
+                        <i class="ph-fill ph-medal text-2xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl font-bold text-white">+8 Años</p>
+                        <p class="text-xs text-gray-400 uppercase tracking-wider">Experiencia</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMNA DERECHA: TEXTO E INFO -->
+            <div class="w-full lg:w-1/2">
+                
+                <div class="inline-block px-4 py-1.5 rounded-full bg-[#0d1226] border border-blue-500/30 text-xs font-bold tracking-widest text-blue-400 mb-6">
+                    SOBRE MÍ
+                </div>
+                
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                    Estrategia, Diseño y <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Tecnología Aplicada</span>
+                </h2>
+                
+                <p class="text-gray-400 text-base leading-relaxed mb-8">
+                    Soy Leguizamon Kevin, un profesional multidisciplinario orientado a marketing digital, diseño visual y automatización de procesos. Cuento con experiencia en creación de contenido gráfico y audiovisual, gestión de redes sociales, desarrollo web y configuración de sistemas de CRM y funnels.
+                    <br><br>
+                    He trabajado con marcas, agencias y proyectos de distintos rubros, combinando criterio estético, pensamiento técnico y enfoque en resultados. Me adapto con rapidez a nuevas herramientas, trabajo de forma autónoma y priorizo la organización, la claridad en la comunicación y la mejora continua de los procesos digitales.
+                     <br><br>
+                     Email Kevinleguizamon132@gmail.com
+                </p>
+
+                <!-- GRID: SERVICIOS Y EDUCACIÓN -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+                    
+                    <!-- Tarjeta Servicios -->
+                    <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-5 hover:bg-white/[0.06] transition-colors group">
+                        <h3 class="text-white font-semibold flex items-center gap-2 mb-4 group-hover:text-blue-400 transition-colors">
+                            <i class="ph-fill ph-rocket-launch text-blue-500 text-lg"></i> Lo que hago
+                        </h3>
+                        <ul class="text-sm text-gray-400 space-y-2.5">
+                            <li class="flex items-center gap-2"><i class="ph-bold ph-check text-blue-500/80"></i> Estrategia de Marketing & Growth</li>
+                            <li class="flex items-center gap-2"><i class="ph-bold ph-check text-blue-500/80"></i> Diseño Web & UX/UI</li>
+                            <li class="flex items-center gap-2"><i class="ph-bold ph-check text-blue-500/80"></i> Animación 3D & Branding</li>
+                            <li class="flex items-center gap-2"><i class="ph-bold ph-check text-blue-500/80"></i> Automatización (GoHighLevel, N8n, Make)</li>
+                            <li class="flex items-center gap-2"><i class="ph-bold ph-check text-blue-500/80"></i> Identidad de Marca</li>
+                            <li class="flex items-center gap-2"><i class="ph-bold ph-check text-blue-500/80"></i> Edición y postproducción de video</li>
+                            <li class="flex items-center gap-2"><i class="ph-bold ph-check text-blue-500/80"></i> Modelado y Animación 3D</li>
+                            <li class="flex items-center gap-2"><i class="ph-bold ph-check text-blue-500/80"></i> Posicionamiento de Marca</li>
+                            <li class="flex items-center gap-2"><i class="ph-bold ph-check text-blue-500/80"></i> Efectos Especiales y Simulación</li>
+                            <li class="flex items-center gap-2"><i class="ph-bold ph-check text-blue-500/80"></i> Motion Graphics</li>
+
+                        </ul>
+                    </div>
+
+                    <!-- Tarjeta Educación -->
+                    <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-5 hover:bg-white/[0.06] transition-colors group">
+                        <h3 class="text-white font-semibold flex items-center gap-2 mb-4 group-hover:text-blue-400 transition-colors">
+                            <i class="ph-fill ph-graduation-cap text-blue-500 text-lg"></i> Formación
+                        </h3>
+                        <ul class="text-sm text-gray-400 space-y-2.5">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500/50"></span> Lic. en Marketing (UCA)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500/50"></span> Tec.Animación digital y efectos visuales (UAI)</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500/50"></span> QA Testing (Talento Tech)</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500/50"></span> XIX Congreso Internacional en Innovación Tecnológica Informática (CIITI)</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500/50"></span> Curso "Animate a programar" (Revolución Digital San Nicolás)</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500/50"></span> Full Stack Web Dev (Udemy)</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500/50"></span> Social Media Mkt (HubSpot)</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500/50"></span> Nivel: Upper Intermediate 1
+ (English Discoveries)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Botones de Acción -->
+                <div class="flex flex-wrap gap-4">
+                    <a href="contacto.html" class="bg-primary hover:bg-blue-600 text-white px-8 py-3 rounded-full text-sm font-medium transition-all flex items-center gap-2 hover:-translate-y-1 shadow-lg shadow-blue-600/20">
+                        Contactar <i class="ph-bold ph-paper-plane-right"></i>
+                    </a>
+                    <a href="trabajos.html" class="bg-[#0f1426] hover:bg-[#1a2138] border border-white/10 text-white px-8 py-3 rounded-full text-sm font-medium transition-all flex items-center gap-2 hover:-translate-y-1 hover:border-white/20">
+                        Ver Portfolio <i class="ph-bold ph-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+                    <!-- SECCIÓN: Key Features Overview -->
+                    <section class="w-full max-w-7xl mx-auto px-6 mb-32 flex flex-col items-center reveal">
+                        <div class="text-center mb-16">
+                            <div class="inline-block px-4 py-1.5 rounded-full bg-[#0d1226] border border-blue-900/50 text-xs font-medium text-blue-400 mb-6">RESULTADOS</div>
+                            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Impacto Medible en Cada Proyecto</h2>
+                            <p class="text-gray-400 text-sm md:text-base max-w-xl mx-auto">Más allá de la estética: estrategias diseñadas para mover la aguja de tu negocio y generar crecimiento real.</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+                            <!-- Card 1: Fuel Your Growth -->
+                            <div class="bg-cardDark border border-cardBorder rounded-2xl p-8 relative overflow-hidden text-center group hover:scale-105 transition-transform duration-300">
+                                <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+                                <div class="h-32 mb-6 relative flex items-end justify-center">
+                                    <!-- Custom CSS Line Chart -->
+                                    <div class="w-full h-full absolute inset-0 flex items-end">
+                                        <svg viewBox="0 0 200 100" class="w-full h-full" preserveAspectRatio="none">
+                                            <path d="M0,100 C50,80 100,90 200,20" fill="none" stroke="url(#lineGradient)" stroke-width="4" class="chart-path" />
+                                            <defs>
+                                                <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
+                                                    <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.2" />
+                                                    <stop offset="100%" stop-color="#3b82f6" />
+                                                </linearGradient>
+                                            </defs>
+                                        </svg>
+                                        <div class="absolute top-[20%] right-0 w-4 h-4 bg-blue-500 rounded-full shadow-[0_0_15px_#3b82f6] animate-pulse"></div>
+                                    </div>
+                                </div>
+                                <h3 class="text-lg font-bold text-white mb-2 relative z-10">Crecimiento de Comunidad
+            </h3>
+                                <p class="text-gray-400 text-sm leading-relaxed relative z-10">Estrategias de contenido orgánico que generan tracción real.
+            Dato: Logré un aumento sostenido del 40% en engagement y 25% en seguidores en menos de 6 meses para el sector inmobiliario.</p>
+                            </div>
+
+                            <!-- Card 2: 98% Client Success -->
+                            <div class="bg-cardDark border border-cardBorder rounded-2xl p-8 relative overflow-hidden text-center group hover:scale-105 transition-transform duration-300">
+                                <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+                                <div class="h-32 mb-6 flex flex-col items-center justify-center relative">
+                                    <div class="w-32 h-16 overflow-hidden relative mb-2">
+                                        <div class="w-32 h-32 rounded-full border-[12px] border-blue-900 border-t-blue-500 border-r-blue-400 border-l-transparent border-b-transparent transform rotate-[-45deg] animate-[spin_3s_ease-out_reverse]"></div>
+                                    </div>
+                                    <div class="flex -space-x-2 mt-2">
+                                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&fit=crop" class="w-8 h-8 rounded-full border-2 border-cardDark" alt="User">
+                                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=64&h=64&fit=crop" class="w-8 h-8 rounded-full border-2 border-cardDark" alt="User">
+                                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=64&h=64&fit=crop" class="w-8 h-8 rounded-full border-2 border-cardDark" alt="User">
+                                    </div>
+                                </div>
+                                <h3 class="text-lg font-bold text-white mb-2 relative z-10">Efectividad de Ventas
+            </h3>
+                                <p class="text-gray-400 text-sm leading-relaxed relative z-10">Campañas de lanzamiento de alto impacto y velocidad. Ejecución de estrategia para e-commerce que resultó en un Sold Out total (100% ventas) de la colección en la primera semana.
+            </p>
+                            </div>
+
+                            <!-- Card 3: Lead the Way -->
+                            <div class="bg-cardDark border border-cardBorder rounded-2xl p-8 relative overflow-hidden text-center group hover:scale-105 transition-transform duration-300">
+                                <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+                                <div class="h-32 mb-6 flex items-end justify-center gap-3 px-8">
+                                    <div class="w-8 bg-blue-900/50 rounded-t-lg h-[40%] hover:h-[50%] transition-all"></div>
+                                    <div class="w-8 bg-blue-800/60 rounded-t-lg h-[60%] hover:h-[70%] transition-all delay-75"></div>
+                                    <div class="w-8 bg-blue-600 rounded-t-lg h-[100%] shadow-[0_0_20px_rgba(37,99,235,0.4)] relative hover:scale-y-105 transition-all">
+                                        <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rounded-full"></div>
+                                    </div>
+                                    <div class="w-8 bg-blue-800/60 rounded-t-lg h-[50%] hover:h-[60%] transition-all delay-75"></div>
+                                    <div class="w-8 bg-blue-900/50 rounded-t-lg h-[30%] hover:h-[40%] transition-all"></div>
+                                </div>
+                            <p  class="text-lg font-bold text-white mb-2 relative z-10">Optimización de Anuncios (CTR)
+                            <p class="text-gray-400 text-sm leading-relaxed relative z-10">Mejora del rendimiento publicitario mediante diseño estratégico. Producción digital que aumentaron significativamente la Tasa de Clics (CTR) y la conversión en campañas financieras y educativas.</p>
+                            </div>
+                        </div>
+        </section>
+
+        <!-- SECCIÓN: Performance Insights & Analytics -->
+        <section class="w-full max-w-7xl mx-auto px-6 mb-32 reveal">
+             <div class="flex flex-col md:flex-row items-center gap-12">
+                 <!-- Left: Stats Grid -->
+                 <div class="w-full md:w-1/2 grid grid-cols-2 gap-4">
+                     <div class="stat-card bg-cardDark border-t-2 border-primary rounded-2xl p-6 shadow-lg group">
+                         <h3 class="text-4xl font-bold text-white mb-2 counter" data-target="8">0</h3>
+                         <p class="text-gray-400 text-sm"> Años de Experiencia</p>
+                     </div>
+                     <div class="stat-card bg-cardDark border-t-2 border-primary rounded-2xl p-6 shadow-lg group">
+                         <h3 class="text-4xl font-bold text-white mb-2 counter" data-target="50">0</h3>
+                         <p class="text-gray-400 text-sm">Proyectos Entregados</p>
+                     </div>
+                     <div class="stat-card bg-cardDark border-t-2 border-primary rounded-2xl p-6 shadow-lg group">
+                         <h3 class="text-4xl font-bold text-white mb-2 counter" data-target="40">0</h3>
+                         <p class="text-gray-400 text-sm"> Aumento de Engagement</p>
+                     </div>
+                     <div class="stat-card bg-cardDark border-t-2 border-primary rounded-2xl p-6 shadow-lg group">
+                         <h3 class="text-4xl font-bold text-white mb-2 counter" data-target="90">0</h3>
+                         <p class="text-gray-400 text-sm"> Objetivos Cumplidos</p>
+                     </div>
+                 </div>
+
+                 <!-- Right: Content -->
+                 <div class="w-full md:w-1/2">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-[#0d1226] border border-blue-900/50 text-xs font-medium text-blue-400 mb-6">Resultados</div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">Trayectoria y Métricas de Rendimiento
+</h2>
+                    
+                    <div class="mt-12 border-t border-white/10 pt-8">
+                        <p class="text-gray-400 text-sm mb-6">Datos reales que respaldan mi experiencia en marketing, diseño y desarrollo web para marcas locales e internacionales.</p>
+                        <div class="flex flex-wrap gap-8 opacity-60 grayscale">
+                        </div>
+                    </div>
+                 </div>
+             </div>
+        </section>
+
+
+  
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 w-full border-t border-white/10 bg-[#020410] pt-20 pb-10 reveal">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- (Contenido del footer igual) -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="md:col-span-1">
+                    <div class="flex items-center gap-2 font-bold text-2xl tracking-tight text-white mb-6">
+                        <span>Kevin Leguizamon </span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Creando experiencias digitales excepcionales que empoderan negocios para crecer y triunfar en la era moderna. Estrategia, diseño y tecnología en un solo lugar.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/optimalgen.arg/
+" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-white/10 hover:text-white transition-colors hover:scale-110"><i class="ph-fill ph-instagram-logo"></i></a>
+                        <a href="https://www.linkedin.com/in/kevin-leguizamon-b43238284/" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-white/10 hover:text-white transition-colors hover:scale-110"><i class="ph-fill ph-linkedin-logo"></i></a>
+<a href="https://www.youtube.com/@OptimalGen" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-white/10 hover:text-white transition-colors hover:scale-110">
+        <i class="ph-fill ph-youtube-logo"></i>
+    </a>                    </div>
+                </div>
+
+                <!-- Links Columns -->
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Paginas</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="index.html" class="hover:text-primary transition-colors">Inicio</a></li>
+                        <li><a href="trabajos.html" class="hover:text-primary transition-colors">Trabajos</a></li>
+                        <li><a href="contacto.html" class="hover:text-primary transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                     <h4 class="text-white font-semibold mb-6">Generar reunion</h4>
+<p class="text-gray-400 text-sm mb-4">
+    <a href="https://calendly.com/kevinleguizamon132/30min" target="_blank" class="hover:text-white hover:underline transition-colors">
+        https://calendly.com/kevinleguizamon132/30min
+    </a>
+</p>                     <div class="flex gap-2">
+                     </div>
+                </div>
+            </div>
+    </footer>
+
+    <script>
+        // Smooth Scroll Horizontal Mouse Wheel
+        const scrollContainer = document.querySelector('.overflow-x-auto');
+        if(scrollContainer) {
+            scrollContainer.addEventListener('wheel', (evt) => {
+                scrollContainer.scrollLeft += evt.deltaY;
+            });
+        }
+
+        // Scroll Reveal Animation (Intersection Observer)
+        document.addEventListener("DOMContentLoaded", function() {
+            const reveals = document.querySelectorAll(".reveal");
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                        // Descomentar si quieres que solo se anime una vez
+                        // observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.1, // Trigger when 10% visible
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            reveals.forEach(reveal => {
+                revealObserver.observe(reveal);
+            });
+
+            // Number Counter Animation
+            const counters = document.querySelectorAll('.counter');
+            const counterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = +counter.getAttribute('data-target');
+                        const speed = 200; // The lower the slower
+
+                        const updateCount = () => {
+                            const count = +counter.innerText.replace('+', '');
+                            const inc = target / speed;
+
+                            if (count < target) {
+                                counter.innerText = Math.ceil(count + inc) + (target > 100 ? '+' : '+');
+                                setTimeout(updateCount, 20);
+                            } else {
+                                counter.innerText = target + '+';
+                            }
+                        };
+                        updateCount();
+                        observer.unobserve(counter);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => {
+                counterObserver.observe(counter);
+            });
+        });
+    </script>
+
+</body>
+</html>

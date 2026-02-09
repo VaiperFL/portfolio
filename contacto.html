@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin Leguizamon - Contacto</title>
+    
+    <!-- Meta tags -->
+    <meta name="description" content="Contacta con Kevin Leguizamon para proyectos de marketing y diseño.">
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Iconos Phosphor -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        bg: '#020410', 
+                        primary: '#2563eb',
+                        glow: '#3b82f6',
+                        cardDark: '#050b1e',
+                        cardBorder: 'rgba(59, 130, 246, 0.2)',
+                        textMuted: '#94a3b8'
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px)",
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #020410;
+            color: white;
+            overflow-x: hidden; 
+        }
+
+        .glow-arc {
+            position: absolute;
+            top: -150px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120vw;
+            height: 600px;
+            background: radial-gradient(50% 50% at 50% 50%, rgba(37, 99, 235, 0.25) 0%, rgba(2, 4, 16, 0) 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(60px);
+            animation: breathe 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes breathe {
+            0% { opacity: 0.8; transform: translateX(-50%) scale(1); }
+            100% { opacity: 1; transform: translateX(-50%) scale(1.05); }
+        }
+
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .nav-glass:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* CLASES DE ANIMACIÓN DE ENTRADA (SCROLL REVEAL) */
+        .reveal { 
+            opacity: 0; 
+            transform: translateY(30px); 
+            transition: all 0.8s ease-out; 
+        }
+        .reveal.active { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+        
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Estilos específicos para inputs */
+        .input-glass {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .input-glass:focus {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: #3b82f6;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col relative pb-0">
+
+    <div class="glow-arc"></div>
+
+    <!-- Navbar -->
+    <nav class="relative z-50 w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between reveal active">
+        <div class="flex items-center gap-2 font-bold text-xl tracking-tight cursor-pointer hover:opacity-80 transition-opacity">
+            <span class="text-white">Leguizamon Kevin</span>
+        </div>
+
+        <div class="hidden md:flex items-center gap-1 nav-glass rounded-full px-2 py-1.5">
+            <a href="index.html" class="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors">Inicio</a>
+            <a href="trabajos.html" class="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors">Trabajos</a>
+            <!-- Contacto Activo -->
+            <a href="contacto.html" class="px-4 py-2 text-sm text-white bg-white/10 rounded-full font-medium transition-all hover:scale-105">Contacto</a>
+        </div>
+
+        <a href="contacto.html" class="hidden md:block bg-primary hover:bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all shadow-[0_0_15px_rgba(37,99,235,0.5)] hover:shadow-[0_0_25px_rgba(37,99,235,0.7)] hover:-translate-y-0.5">
+            Contactar
+        </a>
+
+        <button class="md:hidden text-2xl text-white">
+            <i class="ph ph-list"></i>
+        </button>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="relative z-10 flex-grow flex flex-col items-center pt-16 md:pt-24 w-full px-6">
+        
+        <!-- Header -->
+        <div class="text-center mb-16 max-w-3xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-xs font-medium text-blue-400 mb-6 backdrop-blur-sm reveal delay-100">
+                <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                Hablemos
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight reveal delay-200">
+                Empecemos a trabajar <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-white">Juntos</span>
+            </h1>
+            <p class="text-textMuted text-lg leading-relaxed max-w-xl mx-auto reveal delay-300">
+                ¿Tienes un proyecto en mente? Cuéntame sobre él. Estoy listo para ayudarte a llevar tu marca al siguiente nivel.
+            </p>
+        </div>
+
+        <!-- Sección de Contacto -->
+        <div class="w-full max-w-6xl mx-auto mb-32 grid grid-cols-1 md:grid-cols-2 gap-12 reveal">
+            
+            <!-- Columna Izquierda: Información -->
+            <div class="flex flex-col gap-8">
+                <a href="mailto:Kevinleguizamon132@hotmail.com" class="group bg-cardDark border border-cardBorder rounded-2xl p-6 hover:border-blue-500/50 transition-all hover:translate-x-2 reveal delay-100">
+                    <div class="w-12 h-12 rounded-full bg-blue-900/30 flex items-center justify-center text-blue-400 mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <i class="ph-fill ph-envelope-simple text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">Email</h3>
+                    <p class="text-gray-400 text-sm">Kevinleguizamon132@hotmail.com</p>
+                </a>
+
+                <a href="https://wa.me/3364542169" target="_blank" class="group bg-cardDark border border-cardBorder rounded-2xl p-6 hover:border-green-500/50 transition-all hover:translate-x-2 reveal delay-200">
+                    <div class="w-12 h-12 rounded-full bg-green-900/30 flex items-center justify-center text-green-400 mb-4 group-hover:bg-green-600 group-hover:text-white transition-colors">
+                        <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">WhatsApp</h3>
+                    <p class="text-gray-400 text-sm">+54 336 454-2169</p>
+                </a>
+
+                <a href="https://calendly.com/kevinleguizamon132/30min" target="_blank" class="group bg-cardDark border border-cardBorder rounded-2xl p-6 hover:border-purple-500/50 transition-all hover:translate-x-2 reveal delay-300">
+                    <div class="w-12 h-12 rounded-full bg-purple-900/30 flex items-center justify-center text-purple-400 mb-4 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                        <i class="ph-fill ph-calendar-check text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">Reunión</h3>
+                    <p class="text-gray-400 text-sm">Agenda una llamada de 30 min</p>
+                </a>
+            </div>
+
+            <!-- Columna Derecha: Formulario -->
+            <div class="bg-cardDark border border-cardBorder rounded-3xl p-8 relative overflow-hidden reveal delay-300">
+                <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+                
+                <h3 class="text-2xl font-bold text-white mb-6">Envíame un mensaje</h3>
+                
+                <!-- Formulario conectado a Formspree -->
+                <form action="https://formspree.io/f/mjgevpdp" method="POST" class="space-y-5 relative z-10">
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="space-y-2">
+                            <label for="name" class="text-sm font-medium text-gray-400">Nombre</label>
+                            <!-- Agregado name="nombre" -->
+                            <input type="text" id="name" name="nombre" placeholder="Tu nombre" class="w-full px-4 py-3 rounded-xl input-glass placeholder-gray-600" required>
+                        </div>
+                        <div class="space-y-2">
+                            <label for="email" class="text-sm font-medium text-gray-400">Email</label>
+                            <!-- Agregado name="email" -->
+                            <input type="email" id="email" name="email" placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl input-glass placeholder-gray-600" required>
+                        </div>
+                    </div>
+                    
+             
+
+                    <div class="space-y-2">
+                        <label for="message" class="text-sm font-medium text-gray-400">Mensaje</label>
+                        <!-- Agregado name="mensaje" -->
+                        <textarea id="message" name="mensaje" rows="4" placeholder="Cuéntame sobre tu proyecto..." class="w-full px-4 py-3 rounded-xl input-glass placeholder-gray-600 resize-none" required></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-primary hover:bg-blue-600 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-blue-900/20 hover:shadow-blue-600/40 hover:-translate-y-1">
+                        Enviar Mensaje <i class="ph-bold ph-paper-plane-right ml-2"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 w-full border-t border-white/10 bg-[#020410] pt-20 pb-10 reveal">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="md:col-span-1">
+                    <div class="flex items-center gap-2 font-bold text-2xl tracking-tight text-white mb-6">
+                        <span>Kevin Leguizamon </span>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/optimalgen.arg/" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-white/10 hover:text-white transition-colors hover:scale-110"><i class="ph-fill ph-instagram-logo"></i></a>
+                        <a href="https://www.linkedin.com/in/kevin-leguizamon-b43238284/" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-white/10 hover:text-white transition-colors hover:scale-110"><i class="ph-fill ph-linkedin-logo"></i></a>
+                        <a href="mailto:Kevinleguizamon132@hotmail.com" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-white/10 hover:text-white transition-colors hover:scale-110"><i class="ph-fill ph-microsoft-outlook-logo"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Links -->
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Paginas</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="index.html" class="hover:text-primary transition-colors">Inicio</a></li>
+                        <li><a href="trabajos.html" class="hover:text-primary transition-colors">Trabajos</a></li>
+                        <li><a href="contacto.html" class="hover:text-primary transition-colors text-white font-medium">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de Animaciones -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const reveals = document.querySelectorAll(".reveal");
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                    }
+                });
+            }, { root: null, threshold: 0.1 });
+            reveals.forEach(reveal => revealObserver.observe(reveal));
+        });
+    </script>
+
+</body>
+</html>
