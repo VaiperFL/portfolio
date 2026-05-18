@@ -106,32 +106,49 @@
 </head>
 <body class="min-h-screen flex flex-col relative pb-0">
 
+    <!-- Efecto de fondo (El arco azul vivo) -->
     <div class="glow-arc"></div>
 
-    <!-- Navbar -->
-    <nav class="relative z-50 w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between reveal active">
+   <!-- Navbar -->
+<nav class="relative z-50 w-full max-w-7xl mx-auto px-6 py-6 grid grid-cols-3 items-center reveal active">
+    
+    <!-- Lado Izquierdo: Tu nombre -->
+    <div class="flex justify-start">
         <div class="flex items-center gap-2 font-bold text-xl tracking-tight cursor-pointer hover:opacity-80 transition-opacity">
             <span class="text-white">Leguizamon Kevin</span>
         </div>
+    </div>
 
-        <!-- AQUÍ ESTÁ EL CAMBIO EN EL NAVBAR -->
+    <!-- CENTRO: Únicamente los enlaces centrados -->
+    <div class="flex justify-center">
         <div class="hidden md:flex items-center gap-1 nav-glass rounded-full px-2 py-1.5">
-            <!-- Inicio ahora está 'apagado' (gris) -->
-            <a href="index.html" class="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors">Inicio</a>
-            
-            <!-- Trabajos ahora está 'encendido' (blanco con fondo) -->
-            <a href="/trabajos.html" class="px-4 py-2 text-sm text-white bg-white/10 rounded-full font-medium transition-all hover:scale-105">Trabajos</a>
+            <a href="index.html" data-i18n="nav_inicio" class="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors">
+    Inicio
+</a>
+
+<a href="trabajos.html" data-i18n="nav_trabajos" class="px-4 py-2 text-sm text-white bg-white/10 rounded-full font-medium transition-all hover:scale-105">
+    Trabajos
+</a>
+            <a href="contacto.html" data-i18n="nav_contacto" class="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors">Contacto</a>
         </div>
+    </div>
 
-        
-        <a href="contacto.html" class="hidden md:block bg-primary hover:bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all shadow-[0_0_15px_rgba(37,99,235,0.5)] hover:shadow-[0_0_25px_rgba(37,99,235,0.7)] hover:-translate-y-0.5">
-            Contacto
-        </a>
+    <!-- Lado Derecho: Idioma y Menú móvil -->
+<div class="relative hidden md:block">
+    <button id="lang-toggle" class="bg-transparent border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium transition-all hover:bg-white/10 hover:border-white/40 cursor-pointer z-50">
+        🇺🇸 EN
+    </button>
 
-        <button class="md:hidden text-2xl text-white">
-            <i class="ph ph-list"></i>
+    <div id="lang-menu" class="hidden absolute right-0 mt-2 w-28 bg-[#0d1226] border border-white/10 rounded-lg shadow-lg overflow-hidden">
+        <button class="lang-option w-full text-left px-4 py-2 text-sm text-white hover:bg-white/10" data-lang="es">
+            🇦🇷 ES
         </button>
-    </nav>
+        <button class="lang-option w-full text-left px-4 py-2 text-sm text-white hover:bg-white/10" data-lang="en">
+            🇺🇸 EN
+        </button>
+    </div>
+</div>
+</nav>
     <!-- CONTENIDO PRINCIPAL -->
     <main class="relative z-10 flex-grow flex flex-col items-center pt-16 md:pt-24 w-full px-6">
         
@@ -142,520 +159,1379 @@
                 Portafolio 
             </div>
             <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-                Transformando ideas en <br />
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-white">Experiencias Digitales</span>
+       <span data-i18n= "Transformando">Transformando ideas en <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-white"><span data-i18n= "Experiencias">Experiencias Digitales</span>
             </h1>
             <p class="text-textMuted text-lg leading-relaxed">
-                Unicamente se mostraran partes de lo que fue cada trabajo, ya que otros permanecen bajo confidencialidad.
+             Unicamente se mostraran partes de lo que fue cada trabajo, ya que otros permanecen bajo confidencialidad.
             </p>
         </div>
 
         <!-- Galería Grid -->
         <div class="w-full max-w-7xl mx-auto mb-32">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projects-grid">
-                
-               
+<div class="flex flex-col gap-10">
+    
+    
 
+    
                 <!-- ========================================== -->
                 <!-- PROYECTO 1: APRENDIKA (USA/Design) -->
                 <!-- ========================================== -->
-                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229]" data-category="web marketing">
-                    <div class="slider-container project-image-container aspect-[5/4] relative overflow-hidden">
-                        <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/2 (2).jpg" alt="Aprendika 1" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                              <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/aes.jpg" alt="Aprendika 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>  
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/Diseño sin título.jpg" alt="Aprendika 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                               <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/grey professional digital agency trifold brochure.jpg" alt="Aprendika 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/imagenes-14.jpg" alt="Aprendika 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/imagenes-13.jpg" alt="Aprendika 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                        </div>
-                        <button onclick="slideRelative(this, -1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-left text-xl"></i></button>
-                        <button onclick="slideRelative(this, 1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-right text-xl"></i></button>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 z-30 pointer-events-none">
-                        <div class="flex justify-between items-end">
-                            <div class="pointer-events-auto">
-                                <div class="flex gap-2 mb-3">
-                                    <span class="px-2.5 py-1 rounded bg-red-500/20 border border-red-500/30 text-[10px] font-bold tracking-wider text-red-300 uppercase"> Agencia de Marketing</span>
-                                    <span class="px-2.5 py-1 rounded bg-indigo-500/20 border border-indigo-500/30 text-[10px] font-bold tracking-wider text-indigo-300 uppercase">USA</span>
-                                </div>
-                                <h3 class="text-2xl font-bold text-white mb-2">Aprendika</h3>
-                                <p class="text-gray-400 text-sm line-clamp-2">Diseño y edición de Campañas / Landing Page / Redes Sociales para universidades y programas educativos de Estados Unidos (American Elite School, Professional Scholarship Program, etc).</p>
-                            </div>
-                            <a  class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 shadow-lg cursor-pointer hover:bg-primary hover:text-white pointer-events-auto"><i class="ph-bold ph-arrow-up-right text-lg"></i></a>
-                        </div>
-                    </div>
-                </div>
+                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229] flex flex-col md:flex-row" data-category="web marketing">
+
+    <!-- IZQUIERDA: SLIDER (igual que tenías) -->
+<div class="slider-container md:w-1/2 w-full h-[500px] relative overflow-hidden">
+            <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
+
+            <div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/2 (2).jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+         
+            <div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/Diseño sin título.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+            
+
+<div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/imagenes-13.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+            <div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/aes.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+            
+<div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/imagenes-14.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+
+<div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/grey professional digital agency trifold brochure.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+
+<div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/UTBP POSTS.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+
+
+<div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/Blue and White Modern College Admission Instagram Post2.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+
+        </div>
+
+        <!-- FLECHAS -->
+        <button onclick="slideRelative(this, -1)"
+            class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-left text-xl"></i>
+        </button>
+
+        <button onclick="slideRelative(this, 1)"
+            class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-right text-xl"></i>
+        </button>
+
+    </div>
+
+
+   <!-- DERECHA: INFO MEJORADA -->
+<div class="md:w-1/2 w-full p-10 flex flex-col justify-between bg-gradient-to-br from-[#0a1229] to-[#0d1838]">
+
+    <!-- CONTENIDO -->
+    <div>
+
+        <!-- TAGS -->
+        <div class="flex gap-2 mb-5">
+            <span class="px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[11px] font-semibold tracking-wide text-red-300 uppercase">
+              Agencia de Marketing
+            </span>
+            <span class="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-[11px] font-semibold tracking-wide text-indigo-300 uppercase">
+                USA
+            </span>
+        </div>
+
+        <!-- TITULO -->
+        <h3 class="text-3xl font-semibold text-white mb-3 leading-tight">
+            Aprendika
+        </h3>
+
+        <!-- LINEA DECORATIVA -->
+        <div class="w-12 h-[2px] bg-blue-500 mb-5"></div>
+
+        <!-- DESCRIPCION -->
+        <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-md">
+         Desarrollo de piezas visuales para redes sociales y diseño de landing pages, enfocado en universidades y programas educativos en Estados Unidos.
+        </p>
+
+    </div>
+<div class="flex flex-wrap gap-2 mb-8">
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Figma</span>
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Photoshop</span>
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Meta Ads</span>
+        <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Illustrator</span>
+            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Canva</span>
+
+
+</div>
+
+
+    <!-- FOOTER -->
+    <div class="flex items-center justify-between">
+
+        <!-- MINI DETALLE -->
+        <span class="text-xs text-gray-500 tracking-wide">
+            Branding · Social Media · Web · Marketing Digital
+        </span>
+
+        <!-- BOTON MEJORADO -->
+        <button onclick="openLightbox(this)" class="group w-12 h-12 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 shadow-lg">
+            <i class="ph-bold ph-arrow-up-right text-lg group-hover:rotate-45 transition-transform"></i>
+        </button>
+
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- ========================================== -->
+                <!-- Dr Edmundo Velasco-->
+                <!-- ========================================== -->
+                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229] flex flex-col md:flex-row" data-category="web marketing">
+
+    <!-- IZQUIERDA: SLIDER (igual que tenías) -->
+<div class="slider-container md:w-1/2 w-full h-[500px] relative overflow-hidden">
+            <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
+
+                       <div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/webinas.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+            
+
+            <div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/32.png" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+     
+
+<div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/imagenes-12.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+     
+<div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/4123.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+
+<div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/Posts Edmundo PNL Dic..jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+            <div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/Captura de pantalla 2025-12-05 125842.png" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+ <div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/Captura de pantalla 2025-12-05 125855.png" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+
+        </div>
+
+        <!-- FLECHAS -->
+        <button onclick="slideRelative(this, -1)"
+            class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-left text-xl"></i>
+        </button>
+
+        <button onclick="slideRelative(this, 1)"
+            class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-right text-xl"></i>
+        </button>
+
+    </div>
+
+
+   <!-- DERECHA: INFO MEJORADA -->
+<div class="md:w-1/2 w-full p-10 flex flex-col justify-between bg-gradient-to-br from-[#0a1229] to-[#0d1838]">
+
+    <!-- CONTENIDO -->
+    <div>
+
+        <!-- TAGS -->
+        <div class="flex gap-2 mb-5">
+            <span class="px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[11px] font-semibold tracking-wide text-red-300 uppercase">
+                Marca Personal 
+            </span>
+        </div>
+
+        <!-- TITULO -->
+        <h3 class="text-3xl font-semibold text-white mb-3 leading-tight">
+            Dr. Edmundo Velasco
+        </h3>
+
+        <!-- LINEA DECORATIVA -->
+        <div class="w-12 h-[2px] bg-blue-500 mb-5"></div>
+
+        <!-- DESCRIPCION -->
+        <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-md">
+        Desarrollo de presencia digital para referente en couch de Programación Neurolingüística, incluyendo diseño de página de ventas, contenido para redes sociales y piezas visuales para canal de YouTube, alineadas a su posicionamiento como líder en habla hispana.
+        </p>
+
+    </div>
+<div class="flex flex-wrap gap-2 mb-8">
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Diseño Web</span>
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Photoshop</span>
+            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Canva</span>
+
+
+</div>
+
+
+    <!-- FOOTER -->
+    <div class="flex items-center justify-between">
+
+        <!-- MINI DETALLE -->
+        <span class="text-xs text-gray-500 tracking-wide">
+         PNL · Formación
+        </span>
+
+        <!-- BOTON MEJORADO -->
+        <button onclick="openLightbox(this)" class="group w-12 h-12 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 shadow-lg">
+            <i class="ph-bold ph-arrow-up-right text-lg group-hover:rotate-45 transition-transform"></i>
+        </button>
+
+    </div>
+</div>
+</div>
+
+
+
+
 
 
 
                 <!-- ========================================== -->
                 <!-- PROYECTO 3: EL ARTE DE VIVIR BIEN (Editorial/Web) -->
                 <!-- ========================================== -->
-                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229]" data-category="web marketing">
-                    <div class="slider-container project-image-container aspect-[5/4] relative overflow-hidden">
-                        <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Libro 1" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/Diseño sin título (2).jpg" alt="Libro 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                        </div>
-                        <button onclick="slideRelative(this, -1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-left text-xl"></i></button>
-                        <button onclick="slideRelative(this, 1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-right text-xl"></i></button>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 z-30 pointer-events-none">
-                        <div class="flex justify-between items-end">
-                            <div class="pointer-events-auto">
-                                <div class="flex gap-2 mb-3">
-                                    <span class="px-2.5 py-1 rounded bg-teal-500/20 border border-teal-500/30 text-[10px] font-bold tracking-wider text-teal-300 uppercase">Editorial</span>
-                                    <span class="px-2.5 py-1 rounded bg-cyan-500/20 border border-cyan-500/30 text-[10px] font-bold tracking-wider text-cyan-300 uppercase">Diseño Web</span>
-                                </div>
-                                <h3 class="text-2xl font-bold text-white mb-2">El Arte de Vivir Bien (Libro)</h3>
-                                <p class="text-gray-400 text-sm line-clamp-2">Diseño integral de presencia digital, landing page y campaña de lanzamiento para libro.</p>
-                            </div>
-                            <a class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 shadow-lg cursor-pointer hover:bg-primary hover:text-white pointer-events-auto"><i class="ph-bold ph-arrow-up-right text-lg"></i></a>
-                        </div>
-                    </div>
-                </div>
+                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229] flex flex-col md:flex-row" data-category="web marketing">
+
+    <!-- IZQUIERDA: SLIDER (igual que tenías) -->
+<div class="slider-container md:w-1/2 w-full h-[500px] relative overflow-hidden">
+            <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
 
 
-                 <!-- ========================================== -->
-                <!-- PROYECTO 2: MINERAL BANK (Fintech/3D) -->
-                <!-- ========================================== -->
-                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229]" data-category="3d web">
-                    <div class="slider-container project-image-container aspect-[5/4] relative overflow-hidden">
-                        <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/Diseño sin título (2)-01.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+                       <div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/13.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
             
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/1a.jpg" alt="Mineral Bank 1" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                                <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/5.jpg" alt="Mineral Bank 1" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/4.jpg" alt="Mineral Bank 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                        </div>
-                        <button onclick="slideRelative(this, -1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-left text-xl"></i></button>
-                        <button onclick="slideRelative(this, 1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-right text-xl"></i></button>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 z-30 pointer-events-none">
-                        <div class="flex justify-between items-end">
-                            <div class="pointer-events-auto">
-                                <div class="flex gap-2 mb-3">
-                                    <span class="px-2.5 py-1 rounded bg-violet-500/20 border border-violet-500/30 text-[10px] font-bold tracking-wider text-violet-300 uppercase">Social Media</span>
-                                    <span class="px-2.5 py-1 rounded bg-fuchsia-500/20 border border-fuchsia-500/30 text-[10px] font-bold tracking-wider text-fuchsia-300 uppercase">Branding</span>
-                                </div>
-                                <h3 class="text-2xl font-bold text-white mb-2">Lucia Light Experience </h3>
-                                <p class="text-gray-400 text-sm line-clamp-2">Diseño de contenido visual para Instagram, incluyendo posteos y piezas gráficas alineadas a la identidad
-de marca. </p>
-                            </div>
-                            <a class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 shadow-lg cursor-pointer hover:bg-blue-600 hover:text-white pointer-events-auto"><i class="ph-bold ph-arrow-up-right text-lg"></i></a>
-                        </div>
-                    </div>
-                </div>
+
+            <div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/14.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+     
+
+<div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/ChatGPT Image 24 abr 2026, 14_25_53.png" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+    
+
+
+<div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/Gemini_Generated_Image_1e8hoj1e8hoj1e8h.png" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+            <div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/Gemini_Generated_Image_cq24ecq24ecq24ec.png" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+
+        </div>
+
+        <!-- FLECHAS -->
+        <button onclick="slideRelative(this, -1)"
+            class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-left text-xl"></i>
+        </button>
+
+        <button onclick="slideRelative(this, 1)"
+            class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-right text-xl"></i>
+        </button>
+
+    </div>
+
+
+   <!-- DERECHA: INFO MEJORADA -->
+<div class="md:w-1/2 w-full p-10 flex flex-col justify-between bg-gradient-to-br from-[#0a1229] to-[#0d1838]">
+
+    <!-- CONTENIDO -->
+    <div>
+
+        <!-- TAGS -->
+        <div class="flex gap-2 mb-5">
+            <span class="px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[11px] font-semibold tracking-wide text-red-300 uppercase">
+                Ebook
+            </span>
+        </div>
+
+        <!-- TITULO -->
+        <h3 class="text-3xl font-semibold text-white mb-3 leading-tight">
+            El Arte de Vivir Bien (Libro)
+        </h3>
+
+        <!-- LINEA DECORATIVA -->
+        <div class="w-12 h-[2px] bg-blue-500 mb-5"></div>
+
+        <!-- DESCRIPCION -->
+        <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-md">
+         Diseño integral de presencia digital, pagina de venta y campaña de lanzamiento .
+         Resultados: % de conversión, alcance, leads generados y ventas iniciales.
+        </p>
+
+    </div>
+<div class="flex flex-wrap gap-2 mb-8">
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Diseño Web</span>
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Photoshop</span>
+            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Canva</span>
+
+
+</div>
+
+
+    <!-- FOOTER -->
+    <div class="flex items-center justify-between">
+
+        <!-- MINI DETALLE -->
+        <span class="text-xs text-gray-500 tracking-wide">
+            Adobe Suite · Meta ads
+        </span>
+
+        <!-- BOTON MEJORADO -->
+        <button onclick="openLightbox(this)" class="group w-12 h-12 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 shadow-lg">
+            <i class="ph-bold ph-arrow-up-right text-lg group-hover:rotate-45 transition-transform"></i>
+        </button>
+
+    </div>
+</div>
+</div>
 
 
 
-                
-                <!-- ========================================== -->
-           
-                <!-- ========================================== -->
-                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229]" data-category="branding">
-                    <div class="slider-container project-image-container aspect-[5/4] relative overflow-hidden">
-                        <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/webinas.jpg" alt="Branding 1" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/imagenes-12.jpg" alt="Branding 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                             <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/paginas-02.jpg" alt="Branding 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                             <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/paginas-03.jpg" alt="Branding 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                        </div>
-                        <button onclick="slideRelative(this, -1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-left text-xl"></i></button>
-                        <button onclick="slideRelative(this, 1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-right text-xl"></i></button>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 z-30 pointer-events-none">
-                        <div class="flex justify-between items-end">
-                            <div class="pointer-events-auto">
-                                <div class="flex gap-2 mb-3">
-                                    <span class="px-2.5 py-1 rounded bg-violet-500/20 border border-violet-500/30 text-[10px] font-bold tracking-wider text-violet-300 uppercase">Landing Page</span>
-                                </div>
-                                <h3 class="text-2xl font-bold text-white mb-2">Dr Edmundo Velasco</h3>
-                                <p class="text-gray-400 text-sm line-clamp-2">Diseño de pagina para venta</p>
-                            </div>
-                            <a  class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 shadow-lg cursor-pointer hover:bg-primary hover:text-white pointer-events-auto"><i class="ph-bold ph-arrow-up-right text-lg"></i></a>
-                        </div>
-                    </div>
-                </div>
+
+
+
+
+
+
 
 <!-- ========================================== -->
-                <!-- PROYECTO 3: EL ARTE DE VIVIR BIEN (Editorial/Web) -->
+                <!-- PROYECTO 3: LUCIA LIGHT (Branding) -->
                 <!-- ========================================== -->
-                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229]" data-category="web marketing">
-                    <div class="slider-container project-image-container aspect-[5/4] relative overflow-hidden">
-                        <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
-                            
-        
-
-
-                                <div class="w-full h-full flex-shrink-0 relative">
-                                <!-- Reemplaza 'ruta/a/tu/video.mp4' con tu archivo real -->
-                                <video src="videos/10.mp4" 
-                                       autoplay 
-                                       muted 
-                                       loop 
-                                       playsinline 
-                                       class="w-full h-full object-cover">
-                                </video>
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
 
 
 
-                                <div class="w-full h-full flex-shrink-0 relative">
-                                <!-- Reemplaza 'ruta/a/tu/video.mp4' con tu archivo real -->
-                                <video src="videos/1107.mp4" 
-                                       autoplay 
-                                       muted 
-                                       loop 
-                                       playsinline 
-                                       class="w-full h-full object-cover">
-                                </video>
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                        
-                                <div class="w-full h-full flex-shrink-0 relative">
-                                <!-- Reemplaza 'ruta/a/tu/video.mp4' con tu archivo real -->
-                                <video src="videos/11233.mp4" 
-                                       autoplay 
-                                       muted 
-                                       loop 
-                                       playsinline 
-                                       class="w-full h-full object-cover">
-                                </video>
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
+                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229] flex flex-col md:flex-row" data-category="web marketing">
 
-                                <div class="w-full h-full flex-shrink-0 relative">
-                                <!-- Reemplaza 'ruta/a/tu/video.mp4' con tu archivo real -->
-                                <video src="videos/2 en miral bank nuestra division nunca se detiene.mp4" 
-                                       autoplay 
-                                       muted 
-                                       loop 
-                                       playsinline 
-                                       class="w-full h-full object-cover">
-                                </video>
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
+    <!-- IZQUIERDA: SLIDER (igual que tenías) -->
+<div class="slider-container md:w-1/2 w-full h-[500px] relative overflow-hidden">
+            <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
+     
+
+<div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/lucia.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+                       <div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/4.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+            
+
+            <div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/5.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+
+    
 
 
 
-                                <div class="w-full h-full flex-shrink-0 relative">
-                                <!-- Reemplaza 'ruta/a/tu/video.mp4' con tu archivo real -->
-                                <video src="videos/9 (2).mp4" 
-                                       autoplay 
-                                       muted 
-                                       loop 
-                                       playsinline 
-                                       class="w-full h-full object-cover">
-                                </video>
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
+        </div>
 
-                        </div>
-                        
-                        <!-- BOTONES -->
-                        <button onclick="slideRelative(this, -1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-left text-xl"></i></button>
-                        <button onclick="slideRelative(this, 1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-right text-xl"></i></button>
-                    </div>
+        <!-- FLECHAS -->
+        <button onclick="slideRelative(this, -1)"
+            class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-left text-xl"></i>
+        </button>
 
-                    <!-- INFORMACIÓN -->
-                    <div class="absolute bottom-0 left-0 w-full p-8 z-30 pointer-events-none">
-                        <div class="flex justify-between items-end">
-                            <div class="pointer-events-auto">
-                                <div class="flex gap-2 mb-3">
-                                    <span class="px-2.5 py-1 rounded bg-teal-500/20 border border-teal-500/30 text-[10px] font-bold tracking-wider text-teal-300 uppercase">Editorial</span>
-                                    <span class="px-2.5 py-1 rounded bg-cyan-500/20 border border-cyan-500/30 text-[10px] font-bold tracking-wider text-cyan-300 uppercase">Diseño Web</span>
-                                </div>
-                                <h3 class="text-2xl font-bold text-white mb-2">Edicion Audiovisual</h3>
-                                <p class="text-gray-400 text-sm line-clamp-2">Edicion de video para varios clientes</p>
-                            </div>
-                            <a  class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 shadow-lg cursor-pointer hover:bg-primary hover:text-white pointer-events-auto"><i class="ph-bold ph-arrow-up-right text-lg"></i></a>
-                        </div>
-                    </div>
-                </div>
+        <button onclick="slideRelative(this, 1)"
+            class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-right text-xl"></i>
+        </button>
+
+    </div>
 
 
+   <!-- DERECHA: INFO MEJORADA -->
+<div class="md:w-1/2 w-full p-10 flex flex-col justify-between bg-gradient-to-br from-[#0a1229] to-[#0d1838]">
+
+    <!-- CONTENIDO -->
+    <div>
+
+        <!-- TAGS -->
+        <div class="flex gap-2 mb-5">
+            <span class="px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[11px] font-semibold tracking-wide text-red-300 uppercase">
+                Social Media
+            </span>
+ <span class="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-[11px] font-semibold tracking-wide text-indigo-300 uppercase">
+                Branding
+            </span>                
+            </span>
+        </div>
+
+        <!-- TITULO -->
+        <h3 class="text-3xl font-semibold text-white mb-3 leading-tight">
+           Lucia Light Experience
+        </h3>
+
+        <!-- LINEA DECORATIVA -->
+        <div class="w-12 h-[2px] bg-blue-500 mb-5"></div>
+
+        <!-- DESCRIPCION -->
+        <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-md">
+         Desarrollo de contenido visual para redes sociales, incluyendo diseño de posteos y piezas gráficas alineadas a la identidad de marca. Enfoque en coherencia estética, posicionamiento digital y generación de engagement.
+        </p>
+
+    </div>
+<div class="flex flex-wrap gap-2 mb-8">
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Canva</span>
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Photoshop</span>
+            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Illustrator</span>
+
+
+</div>
+
+
+    <!-- FOOTER -->
+    <div class="flex items-center justify-between">
+
+        <!-- MINI DETALLE -->
+        <span class="text-xs text-gray-500 tracking-wide">
+            Diseño Visual 
+        </span>
+
+        <!-- BOTON MEJORADO -->
+        <button onclick="openLightbox(this)" class="group w-12 h-12 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 shadow-lg">
+            <i class="ph-bold ph-arrow-up-right text-lg group-hover:rotate-45 transition-transform"></i>
+        </button>
+
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+<!-- ========================================== -->
+                <!-- PROYECTO 4: Mineral Bank -->
                 <!-- ========================================== -->
-                <!-- PROYECTO 4: NATALIA FAVRE (Real Estate) -->
-                <!-- ========================================== -->
-                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229]" data-category="web marketing">
-                    <div class="slider-container project-image-container aspect-[5/4] relative overflow-hidden">
-                        <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Real Estate 1" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                              <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/32.jpg" alt="Real Estate 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/project1-10.jpg" alt="Real Estate 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/project1-11.jpg" alt="Real Estate 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                        </div>
-                        <button onclick="slideRelative(this, -1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-left text-xl"></i></button>
-                        <button onclick="slideRelative(this, 1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-right text-xl"></i></button>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 z-30 pointer-events-none">
-                        <div class="flex justify-between items-end">
-                            <div class="pointer-events-auto">
-                                <div class="flex gap-2 mb-3">
-                                    <span class="px-2.5 py-1 rounded bg-green-500/20 border border-green-500/30 text-[10px] font-bold tracking-wider text-green-300 uppercase">Gestión de Redes Sociales</span>
-                                    <span class="px-2.5 py-1 rounded bg-purple-500/20 border border-purple-500/30 text-[10px] font-bold tracking-wider text-purple-300 uppercase">Marketing</span>
-                                </div>
-                                <h3 class="text-2xl font-bold text-white mb-2">Natalia Favre Propiedades</h3>
-                                <p class="text-gray-400 text-sm line-clamp-2">Community Manager y Diseñador</p>
-                            </div>
-                            <a  class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 shadow-lg cursor-pointer hover:bg-primary hover:text-white pointer-events-auto"><i class="ph-bold ph-arrow-up-right text-lg"></i></a>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- ========================================== -->
-                <!-- PROYECTO 5: AURA URBANA (E-commerce) -->
-                <!-- ========================================== -->
-                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229]" data-category="web marketing">
-                    <div class="slider-container project-image-container aspect-[5/4] relative overflow-hidden">
-                        <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Moda 1" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Moda 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                        </div>
-                        <button onclick="slideRelative(this, -1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-left text-xl"></i></button>
-                        <button onclick="slideRelative(this, 1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-right text-xl"></i></button>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 z-30 pointer-events-none">
-                        <div class="flex justify-between items-end">
-                            <div class="pointer-events-auto">
-                                <div class="flex gap-2 mb-3">
-                                    <span class="px-2.5 py-1 rounded bg-pink-500/20 border border-pink-500/30 text-[10px] font-bold tracking-wider text-pink-300 uppercase">E-commerce</span>
-                                    <span class="px-2.5 py-1 rounded bg-yellow-500/20 border border-yellow-500/30 text-[10px] font-bold tracking-wider text-yellow-300 uppercase">Fashion</span>
-                                </div>
-                                <h3 class="text-2xl font-bold text-white mb-2">Aura Urbana</h3>
-                                <p class="text-gray-400 text-sm line-clamp-2">Estrategia de lanzamiento: Sold Out total en las primeras dos semana.</p>
-                            </div>
-                            <a  class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 shadow-lg cursor-pointer hover:bg-primary hover:text-white pointer-events-auto"><i class="ph-bold ph-arrow-up-right text-lg"></i></a>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- ========================================== -->
-                <!-- PROYECTO 6: MINERAL BIZ (Gastronomía) -->
-                <!-- ========================================== -->
-                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229]" data-category="marketing">
-                    <div class="slider-container project-image-container aspect-[5/4] relative overflow-hidden">
-                        <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/centro.jpeg" alt="Restaurant 1" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/ig mineral.png" alt="Restaurant 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                             <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/3 imagenes.jpg" alt="Restaurant 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                           
-                        </div>
-                        <button onclick="slideRelative(this, -1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-left text-xl"></i></button>
-                        <button onclick="slideRelative(this, 1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-right text-xl"></i></button>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 z-30 pointer-events-none">
-                        <div class="flex justify-between items-end">
-                            <div class="pointer-events-auto">
-                                <div class="flex gap-2 mb-3">
-                                    <span class="px-2.5 py-1 rounded bg-yellow-600/20 border border-yellow-600/30 text-[10px] font-bold tracking-wider text-yellow-300 uppercase">Gastronomía</span>
-                                </div>
-                                <h3 class="text-2xl font-bold text-white mb-2">Centro de Negocios</h3>
-                                <p class="text-gray-400 text-sm line-clamp-2">Estrategia de marketing digital para sector gastronómico: aumento de flujo de clientes y fidelización.</p>
-                            </div>                                
 
-                            <a  class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 shadow-lg cursor-pointer hover:bg-primary hover:text-white pointer-events-auto"><i class="ph-bold ph-arrow-up-right text-lg"></i></a>
-                        </div>
-                    </div>
-                </div>
+                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229] flex flex-col md:flex-row" data-category="web marketing">
 
-                <!-- ========================================== -->
-                <!-- PROYECTO 7: LUCIA LIGHT (Branding) -->
-                <!-- ========================================== -->
-                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229]" data-category="branding">
-                    <div class="slider-container project-image-container aspect-[5/4] relative overflow-hidden">
-                        <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
-                            <div class="w-full h-full flex-shrink-0 relative">
+    <!-- IZQUIERDA: SLIDER (igual que tenías) -->
+<div class="slider-container md:w-1/2 w-full h-[500px] relative overflow-hidden">
+            <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
+     
+
+<div class="w-full h-full flex-shrink-0 relative">
                                 <img src="imagenes/8.jpg" alt="Branding 1" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                            <div class="w-full h-full flex-shrink-0 relative">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+                       <div class="w-full h-full flex-shrink-0 relative">
                                 <img src="imagenes/9.jpg" alt="Branding 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                             <div class="w-full h-full flex-shrink-0 relative">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+            
+
+            <div class="w-full h-full flex-shrink-0 relative">
                                 <img src="imagenes/10.jpg" alt="Branding 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                            
-                              <div class="w-full h-full flex-shrink-0 relative">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+            <div class="w-full h-full flex-shrink-0 relative">
                                 <img src="imagenes/imagen3.png" alt="Branding 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                              <div class="w-full h-full flex-shrink-0 relative">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+            <div class="w-full h-full flex-shrink-0 relative">
                                 <img src="imagenes/imagen4.png" alt="Branding 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                             <div class="w-full h-full flex-shrink-0 relative">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+
+      <div class="w-full h-full flex-shrink-0 relative">
                                 <img src="imagenes/project1-04.jpg" alt="Branding 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                        </div>
-                        <button onclick="slideRelative(this, -1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-left text-xl"></i></button>
-                        <button onclick="slideRelative(this, 1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-right text-xl"></i></button>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 z-30 pointer-events-none">
-                        <div class="flex justify-between items-end">
-                            <div class="pointer-events-auto">
-                                <div class="flex gap-2 mb-3">
-                                    <span class="px-2.5 py-1 rounded bg-violet-500/20 border border-violet-500/30 text-[10px] font-bold tracking-wider text-violet-300 uppercase">WEB</span>
-                                </div>
-                                <h3 class="text-2xl font-bold text-white mb-2">Mineral Bank</h3>
-                                <p class="text-gray-400 text-sm line-clamp-2">Programador Web & UX/UI y Diseño</p>
-                            </div>
-                            <a  class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 shadow-lg cursor-pointer hover:bg-primary hover:text-white pointer-events-auto"><i class="ph-bold ph-arrow-up-right text-lg"></i></a>
-                        </div>
-                    </div>
-                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
 
-                <!-- ========================================== -->
-                <!-- PROYECTO 8: AUTOMATIZACIÓN (GoHighLevel) -->
-                <!-- ========================================== -->
-                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229]" data-category="crm">
-                    <div class="slider-container project-image-container aspect-[5/4] relative overflow-hidden">
-                        <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
-                          
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="CRM 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 z-30 pointer-events-none">
-                        <div class="flex justify-between items-end">
-                            <div class="pointer-events-auto">
-                                <div class="flex gap-2 mb-3">
-                                    <span class="px-2.5 py-1 rounded bg-emerald-500/20 border border-emerald-500/30 text-[10px] font-bold tracking-wider text-emerald-300 uppercase">Automation</span>
-                                    <span class="px-2.5 py-1 rounded bg-gray-500/20 border border-gray-500/30 text-[10px] font-bold tracking-wider text-gray-300 uppercase">CRM</span>
-                                </div>
-                                <h3 class="text-2xl font-bold text-white mb-2">GoHighLevel</h3>
-                                <p class="text-gray-400 text-sm line-clamp-2">Implementación de pipelines de ventas y automatización de marketing para gestión de leads.</p>
-                            </div>
-                            <a  class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 shadow-lg cursor-pointer hover:bg-primary hover:text-white pointer-events-auto"><i class="ph-bold ph-arrow-up-right text-lg"></i></a>
-                        </div>
-                    </div>
-                </div>
 
+
+
+        </div>
+
+        <!-- FLECHAS -->
+        <button onclick="slideRelative(this, -1)"
+            class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-left text-xl"></i>
+        </button>
+
+        <button onclick="slideRelative(this, 1)"
+            class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-right text-xl"></i>
+        </button>
+
+    </div>
+
+
+   <!-- DERECHA: INFO MEJORADA -->
+<div class="md:w-1/2 w-full p-10 flex flex-col justify-between bg-gradient-to-br from-[#0a1229] to-[#0d1838]">
+
+    <!-- CONTENIDO -->
+    <div>
+
+        <!-- TAGS -->
+        <div class="flex gap-2 mb-5">
+            <span class="px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[11px] font-semibold tracking-wide text-red-300 uppercase">
+                Sitio Web
+
+            </span>                
+            </span>
+        </div>
+
+        <!-- TITULO -->
+        <h3 class="text-3xl font-semibold text-white mb-3 leading-tight">
+           Mineral Bank
+        </h3>
+
+        <!-- LINEA DECORATIVA -->
+        <div class="w-12 h-[2px] bg-blue-500 mb-5"></div>
+
+        <!-- DESCRIPCION -->
+        <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-md">
+        Desarrollo y programación de sitio web institucional con enfoque en experiencia de usuario (UX) e interfaz (UI), priorizando navegación clara, estructura eficiente y diseño orientado a usabilidad.
+        </p>
+
+    </div>
+<div class="flex flex-wrap gap-2 mb-8">
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">HTML</span>
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">CSS</span>
+            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">JavaScript</span>
+            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Framer</span>
+            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Photoshop</span>
+
+
+</div>
+
+
+    <!-- FOOTER -->
+    <div class="flex items-center justify-between">
+
+        <!-- MINI DETALLE -->
+        <span class="text-xs text-gray-500 tracking-wide">
+            Desarrollo Web · UX/UI · Diseño Digital
+        </span>
+
+        <!-- BOTON MEJORADO -->
+        <button onclick="openLightbox(this)" class="group w-12 h-12 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 shadow-lg">
+            <i class="ph-bold ph-arrow-up-right text-lg group-hover:rotate-45 transition-transform"></i>
+        </button>
+
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<!-- ========================================== -->
+                <!-- Natalia Favre Propiedades -->
+                <!-- ========================================== -->
+
+
+
+                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229] flex flex-col md:flex-row" data-category="web marketing">
+
+    <!-- IZQUIERDA: SLIDER (igual que tenías) -->
+<div class="slider-container md:w-1/2 w-full h-[500px] relative overflow-hidden">
+            <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
+     
+
+<div class="w-full h-full flex-shrink-0 relative">
+                                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Real Estate 1" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+                       <div class="w-full h-full flex-shrink-0 relative">
+                                <img src="imagenes/32.jpg" alt="Real Estate 2" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+            
+
+            <div class="w-full h-full flex-shrink-0 relative">
+                                <img src="imagenes/project1-10.jpg" alt="Real Estate 2" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+            <div class="w-full h-full flex-shrink-0 relative">
+                                <img src="imagenes/project1-11.jpg" alt="Real Estate 2" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+
+
+
+        </div>
+
+        <!-- FLECHAS -->
+        <button onclick="slideRelative(this, -1)"
+            class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-left text-xl"></i>
+        </button>
+
+        <button onclick="slideRelative(this, 1)"
+            class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-right text-xl"></i>
+        </button>
+
+    </div>
+
+
+   <!-- DERECHA: INFO MEJORADA -->
+<div class="md:w-1/2 w-full p-10 flex flex-col justify-between bg-gradient-to-br from-[#0a1229] to-[#0d1838]">
+
+    <!-- CONTENIDO -->
+    <div>
+
+         <!-- TAGS -->
+        <div class="flex gap-2 mb-5">
+            <span class="px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[11px] font-semibold tracking-wide text-red-300 uppercase">
+               Social Media
+            </span>
+            <span class="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-[11px] font-semibold tracking-wide text-indigo-300 uppercase">
+                Branding
+            </span>
+               <span class="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-[11px] font-semibold tracking-wide text-indigo-300 uppercase">
+                Real Estate
+            </span>
+        </div>
+
+
+        <!-- TITULO -->
+        <h3 class="text-3xl font-semibold text-white mb-3 leading-tight">
+           Natalia Favre Propiedades
+        </h3>
+
+        <!-- LINEA DECORATIVA -->
+        <div class="w-12 h-[2px] bg-blue-500 mb-5"></div>
+
+        <!-- DESCRIPCION -->
+        <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-md">
+   Gestión de redes sociales y desarrollo de estrategia de contenidos orientada al posicionamiento inmobiliario y generación de consultas. Rediseño de identidad visual y tono de comunicación, alineados al mercado local y al perfil del público objetivo.
+        </p>
+
+    </div>
+<div class="flex flex-wrap gap-2 mb-8">
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Meta Business Suite</span>
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Canva</span>
+            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Illustrator</span>
+            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Photoshop</span>
+
+
+</div>
+
+
+    <!-- FOOTER -->
+    <div class="flex items-center justify-between">
+
+        <!-- MINI DETALLE -->
+        <span class="text-xs text-gray-500 tracking-wide">
+            Meta Business Suite · Canva · Photoshop · Illustrator
+        </span>
+
+        <!-- BOTON MEJORADO -->
+        <button onclick="openLightbox(this)" class="group w-12 h-12 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 shadow-lg">
+            <i class="ph-bold ph-arrow-up-right text-lg group-hover:rotate-45 transition-transform"></i>
+        </button>
+
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+<!-- ========================================== -->
+                <!--  Contenido para Redes -->
+                <!-- ========================================== -->
+
+
+
+                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229] flex flex-col md:flex-row" data-category="web marketing">
+
+    <!-- IZQUIERDA: SLIDER (igual que tenías) -->
+<div class="slider-container md:w-1/2 w-full h-[500px] relative overflow-hidden">
+            <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
+ <div class="min-w-full h-full">
+    <iframe 
+      src="https://drive.google.com/file/d/1i72etFgZjlOviZoWliP30UcZIiV21j-p/preview"
+      width="100%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  </div>
+
+  <div class="min-w-full h-full">
+    <iframe 
+      src="https://drive.google.com/file/d/1jaUaLV2t1zb_fN4jSHHVd9nqSrZxAzCv/preview"
+      width="100%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  </div>
+
+  <div class="min-w-full h-full">
+    <iframe 
+      src="https://drive.google.com/file/d/12-BPdOrhlSTpTnS8pnAz_hc7baeqfMkA/preview"
+      width="100%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  </div>
+
+  <div class="min-w-full h-full">
+    <iframe 
+      src="https://drive.google.com/file/d/1NgOijpMHQyYpktcyozUFc-ACJAdORIKA/preview"
+      width="100%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  </div>
+
+   <div class="min-w-full h-full">
+    <iframe 
+      src="https://drive.google.com/file/d/1Jfqj0nZTUYiavr9Or9ulqvzk-sHbb7XU/preview"
+      width="100%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  </div>
+
+   <div class="min-w-full h-full">
+    <iframe 
+      src="https://drive.google.com/file/d/1yFZrvijrUClqYTjMwyfG0VtboPVT_xwb/preview"
+      width="100%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  </div>
+        </div>
+
+        <!-- FLECHAS -->
+        <button onclick="slideRelative(this, -1)"
+            class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-left text-xl"></i>
+        </button>
+
+        <button onclick="slideRelative(this, 1)"
+            class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-right text-xl"></i>
+        </button>
+
+    </div>
+
+
+   <!-- DERECHA: INFO MEJORADA -->
+<div class="md:w-1/2 w-full p-10 flex flex-col justify-between bg-gradient-to-br from-[#0a1229] to-[#0d1838]">
+
+    <!-- CONTENIDO -->
+    <div>
+
+         <!-- TAGS -->
+        <div class="flex gap-2 mb-5">
+            <span class="px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[11px] font-semibold tracking-wide text-red-300 uppercase">
+               Edición de Video
+            </span>
+         
+              </div>  
+        </div>
+
+
+        <!-- TITULO -->
+        <h3 class="text-3xl font-semibold text-white mb-3 leading-tight">
+           Contenido para Redes - Jhoel Flores
+        </h3>
+
+        <!-- LINEA DECORATIVA -->
+        <div class="w-12 h-[2px] bg-blue-500 mb-5"></div>
+
+        <!-- DESCRIPCION -->
+        <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-md">
+Edición y posproducción de contenido para TikTok, gestionando un volumen de 25 piezas semanales adaptadas a tendencias de la plataforma, optimizando ritmo, narrativa y retención.<div class="flex flex-wrap gap-2 mb-8">
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Premiere Pro</span>
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">After Effects</span>
+            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">TikTok</span>
+
+
+</div>
+
+
+    <!-- FOOTER -->
+    <div class="flex items-center justify-between">
+
+        <!-- MINI DETALLE -->
+        <span class="text-xs text-gray-500 tracking-wide">
+Postproducción · Audiovisual · Engagement      </span>
+
+        <!-- BOTON MEJORADO -->
+        <button onclick="openLightbox(this)" class="group w-12 h-12 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 shadow-lg">
+            <i class="ph-bold ph-arrow-up-right text-lg group-hover:rotate-45 transition-transform"></i>
+        </button>
+
+    </div>
+</div>
+</div>
+
+
+
+
+<!-- ========================================== -->
+                <!-- Páginas de Venta -->
+                <!-- ========================================== -->
+
+
+
+                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229] flex flex-col md:flex-row" data-category="web marketing">
+
+    <!-- IZQUIERDA: SLIDER (igual que tenías) -->
+<div class="slider-container md:w-1/2 w-full h-[500px] relative overflow-hidden">
+            <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
+ <div class="min-w-full h-full">
+    <iframe 
+      src="https://drive.google.com/file/d/1-YkDMLnG-mdhXz5bQtXhjcech8zFkzxw/preview"
+      width="100%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  </div>
+
+  <div class="min-w-full h-full">
+    <iframe 
+      src="https://drive.google.com/file/d/1-l1vuDP4gtIGtkYeFeD5EJ-OSJE4vj_A/preview"
+      width="100%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  </div>
+
+  <div class="min-w-full h-full">
+    <iframe 
+      src="https://drive.google.com/file/d/1vvejePcjpj38SzBjETsI-pK2AJgfestw/preview"
+      width="100%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  </div>
+
+  <div class="min-w-full h-full">
+    <iframe 
+      src="https://drive.google.com/file/d/1Su0DYQiL56N7FFsWNT32AnwSgnTqGS2z/preview"
+      width="100%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  </div>
+
+   <div class="min-w-full h-full">
+    <iframe 
+      src="https://drive.google.com/file/d/1usISlQGSsT2tkYKZVW4ZD39dawyqNe1r/preview"
+      width="100%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  </div>
+
+   <div class="min-w-full h-full">
+    <iframe 
+      src="https://drive.google.com/file/d/1mHLURjmXNbPzUEg9T9_ovhHr_o6_VPBW/preview"
+      width="100%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  </div>
+        </div>
+
+        <!-- FLECHAS -->
+        <button onclick="slideRelative(this, -1)"
+            class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-left text-xl"></i>
+        </button>
+
+        <button onclick="slideRelative(this, 1)"
+            class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-right text-xl"></i>
+        </button>
+
+    </div>
+
+
+   <!-- DERECHA: INFO MEJORADA -->
+<div class="md:w-1/2 w-full p-10 flex flex-col justify-between bg-gradient-to-br from-[#0a1229] to-[#0d1838]">
+
+    <!-- CONTENIDO -->
+    <div>
+
+         <!-- TAGS -->
+        <div class="flex gap-2 mb-5">
+            <span class="px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[11px] font-semibold tracking-wide text-red-300 uppercase">
+               Performance 
+            </span>
+            <span class="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-[11px] font-semibold tracking-wide text-indigo-300 uppercase">
+                Funnels de Venta
+            </span>
+            
+        </div>
+
+
+        <!-- TITULO -->
+        <h3 class="text-3xl font-semibold text-white mb-3 leading-tight">
+           Páginas de Venta
+        </h3>
+
+        <!-- LINEA DECORATIVA -->
+        <div class="w-12 h-[2px] bg-blue-500 mb-5"></div>
+
+        <!-- DESCRIPCION -->
+        <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-md">
+Diseño y desarrollo de múltiples landing pages orientadas a la conversión para distintos productos ganadores. Enfoque en estructura persuasiva, optimización UX/UI, testing de secciones y alineación con campañas de tráfico pago para maximizar resultados.    </div>
+<div class="flex flex-wrap gap-2 mb-8">
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Figma</span>
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">HTML, CSS, JavaScript</span>
+            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Email Marketing</span>
+            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Meta Ads</span>
+
+
+</div>
+
+
+    <!-- FOOTER -->
+    <div class="flex items-center justify-between">
+
+        <!-- MINI DETALLE -->
+        <span class="text-xs text-gray-500 tracking-wide">
+Conversión · CRO · Marketing · Ventas · Growth       </span>
+
+        <!-- BOTON MEJORADO -->
+        <button onclick="openLightbox(this)" class="group w-12 h-12 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 shadow-lg">
+            <i class="ph-bold ph-arrow-up-right text-lg group-hover:rotate-45 transition-transform"></i>
+        </button>
+
+    </div>
+</div>
+</div>
+
+
+<!-- ========================================== -->
+                <!-- Centro de Negocios -->
+                <!-- ========================================== -->
+
+
+
+                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229] flex flex-col md:flex-row" data-category="web marketing">
+
+    <!-- IZQUIERDA: SLIDER (igual que tenías) -->
+<div class="slider-container md:w-1/2 w-full h-[500px] relative overflow-hidden">
+            <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
+     
+
+<div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/centro.jpeg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+                       <div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/ig mineral.png" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+            
+
+            <div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/3 imagenes.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+        </div>
+
+        <!-- FLECHAS -->
+        <button onclick="slideRelative(this, -1)"
+            class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-left text-xl"></i>
+        </button>
+
+        <button onclick="slideRelative(this, 1)"
+            class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-right text-xl"></i>
+        </button>
+
+    </div>
+
+
+   <!-- DERECHA: INFO MEJORADA -->
+<div class="md:w-1/2 w-full p-10 flex flex-col justify-between bg-gradient-to-br from-[#0a1229] to-[#0d1838]">
+
+    <!-- CONTENIDO -->
+    <div>
+
+         <!-- TAGS -->
+        <div class="flex gap-2 mb-5">
+            <span class="px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[11px] font-semibold tracking-wide text-red-300 uppercase">
+               Marketing Digital
+            </span>
+            <span class="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-[11px] font-semibold tracking-wide text-indigo-300 uppercase">
+                Gastronomía
+            </span>
+               <span class="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-[11px] font-semibold tracking-wide text-indigo-300 uppercase">
+                Estrategia
+            </span>
+        </div>
+
+
+        <!-- TITULO -->
+        <h3 class="text-3xl font-semibold text-white mb-3 leading-tight">
+           Centro de Negocios
+        </h3>
+
+        <!-- LINEA DECORATIVA -->
+        <div class="w-12 h-[2px] bg-blue-500 mb-5"></div>
+
+        <!-- DESCRIPCION -->
+        <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-md">
+Desarrollo e implementación de estrategia de marketing digital para el sector gastronómico, orientada a aumentar visibilidad, atraer clientes y optimizar la comunicación de marca en canales digitales.        </p>
+
+    </div>
+<div class="flex flex-wrap gap-2 mb-8">
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Meta Business Suite</span>
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Canva</span>
+            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Instagram</span>
+            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Analytics</span>
+
+
+</div>
+
+
+    <!-- FOOTER -->
+    <div class="flex items-center justify-between">
+
+        <!-- MINI DETALLE -->
+        <span class="text-xs text-gray-500 tracking-wide">
+Marketing Digital       </span>
+
+        <!-- BOTON MEJORADO -->
+        <button onclick="openLightbox(this)" class="group w-12 h-12 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 shadow-lg">
+            <i class="ph-bold ph-arrow-up-right text-lg group-hover:rotate-45 transition-transform"></i>
+        </button>
+
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- ========================================== -->
+                <!-- Aura Urbana -->
+                <!-- ========================================== -->
+
+
+
+                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229] flex flex-col md:flex-row" data-category="web marketing">
+
+    <!-- IZQUIERDA: SLIDER (igual que tenías) -->
+<div class="slider-container md:w-1/2 w-full h-[500px] relative overflow-hidden">
+            <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
+     
+
+<div class="w-full h-full flex-shrink-0 relative">
+                                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80
+" alt="CRM 2" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+<div class="w-full h-full flex-shrink-0 relative">
+                                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="CRM 2" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+        </div>
+
+        <!-- FLECHAS -->
+        <button onclick="slideRelative(this, -1)"
+            class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-left text-xl"></i>
+        </button>
+
+        <button onclick="slideRelative(this, 1)"
+            class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-right text-xl"></i>
+        </button>
+
+    </div>
+
+
+   <!-- DERECHA: INFO MEJORADA -->
+<div class="md:w-1/2 w-full p-10 flex flex-col justify-between bg-gradient-to-br from-[#0a1229] to-[#0d1838]">
+
+    <!-- CONTENIDO -->
+    <div>
+
+         <!-- TAGS -->
+        <div class="flex gap-2 mb-5">
+            <span class="px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[11px] font-semibold tracking-wide text-red-300 uppercase">
+               E-commerce 
+            </span>
+            <span class="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-[11px] font-semibold tracking-wide text-indigo-300 uppercase">
+               Lanzamiento Digital
+            </span>
+            
+        </div>
+
+
+        <!-- TITULO -->
+        <h3 class="text-3xl font-semibold text-white mb-3 leading-tight">
+           Aura Urbana
+        </h3>
+
+        <!-- LINEA DECORATIVA -->
+        <div class="w-12 h-[2px] bg-blue-500 mb-5"></div>
+
+        <!-- DESCRIPCION -->
+        <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-md">
+Dirección de campaña de lanzamiento en Instagram y TikTok, logrando el sold-out de la colección inicial durante la primera semana operativa mediante estrategia de contenido y difusión digital.    </div>
+<div class="flex flex-wrap gap-2 mb-8">
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Instagram</span>
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">TikTok</span>
+            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Meta Ads</span>
+            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Canva</span>
+
+
+</div>
+
+
+    <!-- FOOTER -->
+    <div class="flex items-center justify-between">
+
+        <!-- MINI DETALLE -->
+        <span class="text-xs text-gray-500 tracking-wide">
+Conversión · Growth · Performance       </span>
+
+        <!-- BOTON MEJORADO -->
+        <button onclick="openLightbox(this)" class="group w-12 h-12 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 shadow-lg">
+            <i class="ph-bold ph-arrow-up-right text-lg group-hover:rotate-45 transition-transform"></i>
+        </button>
+
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+<!-- ========================================== -->
+                <!-- Centro de Negocios -->
+                <!-- ========================================== -->
+
+
+
+                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229] flex flex-col md:flex-row" data-category="web marketing">
+
+    <!-- IZQUIERDA: SLIDER (igual que tenías) -->
+<div class="slider-container md:w-1/2 w-full h-[500px] relative overflow-hidden">
+            <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
+     
+
+<div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/project1-05.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+                       <div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/project1-06 - copia.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+            
+
+            <div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/project1-07 - copia.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+
+                 <div class="w-full h-full flex-shrink-0 relative">
+                <img src="imagenes/project1-01.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90"></div>
+            </div>
+        </div>
+
+        <!-- FLECHAS -->
+        <button onclick="slideRelative(this, -1)"
+            class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-left text-xl"></i>
+        </button>
+
+        <button onclick="slideRelative(this, 1)"
+            class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 z-30">
+            <i class="ph-bold ph-caret-right text-xl"></i>
+        </button>
+
+    </div>
+
+
+   <!-- DERECHA: INFO MEJORADA -->
+<div class="md:w-1/2 w-full p-10 flex flex-col justify-between bg-gradient-to-br from-[#0a1229] to-[#0d1838]">
+
+    <!-- CONTENIDO -->
+    <div>
+
+         <!-- TAGS -->
+        <div class="flex gap-2 mb-5">
+            <span class="px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[11px] font-semibold tracking-wide text-red-300 uppercase">
+               Marketing Digital
+            </span>
+            <span class="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-[11px] font-semibold tracking-wide text-indigo-300 uppercase">
+                Diseño
+            </span>
+               <span class="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-[11px] font-semibold tracking-wide text-indigo-300 uppercase">
+                Desarrollo, Desarrollo · Contenido Digital
+            </span>
+        </div>
+
+
+        <!-- TITULO -->
+        <h3 class="text-3xl font-semibold text-white mb-3 leading-tight">
+           Freelancer
+        </h3>
+
+        <!-- LINEA DECORATIVA -->
+        <div class="w-12 h-[2px] bg-blue-500 mb-5"></div>
+
+        <!-- DESCRIPCION -->
+        <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-md">
+Desarrollo de proyectos independientes en diseño y marketing digital, incluyendo modelado 3D, creación de escenas y personajes, branding, diseño de logotipos, desarrollo web y contenido para redes sociales.
+    </div>
+<div class="flex flex-wrap gap-2 mb-8">
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Blender</span>
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Canva</span>
+            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Photoshop</span>
+            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Illustrator</span>
+                        <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Figma</span>
+         <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">HTML · CSS ·</span>
+     <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Premiere Pro</span>
+          <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Premiere Pro</span>
+        <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">DaVinci Resolve</span>
+    <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Unreal Engine 5</span>
+   <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Canva</span>
+ <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded">Meta Ads</span>
+
+
+
+
+
+</div>
+
+
+    <!-- FOOTER -->
+    <div class="flex items-center justify-between">
+
+        <!-- MINI DETALLE -->
+        <span class="text-xs text-gray-500 tracking-wide">
+Creatividad · Producción Digital · Proyectos Independientes       </span>
+
+        <!-- BOTON MEJORADO -->
+        <button onclick="openLightbox(this)" class="group w-12 h-12 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 shadow-lg">
+            <i class="ph-bold ph-arrow-up-right text-lg group-hover:rotate-45 transition-transform"></i>
+        </button>
+
+    </div>
+</div>
+</div>
 
 
 
 
 
                 
-                <!-- ========================================== -->
-                <!-- PROYECTO 7: LUCIA LIGHT (Branding) -->
-                <!-- ========================================== -->
-                <div class="project-card rounded-3xl overflow-hidden group relative bg-[#0a1229]" data-category="branding">
-                    <div class="slider-container project-image-container aspect-[5/4] relative overflow-hidden">
-                        <div class="slider-track flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);" data-index="0">
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/project1-05.jpg" alt="Branding 1" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                            <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/project1-06 - copia.jpg" alt="Branding 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                             <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/project1-07 - copia.jpg" alt="Branding 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                             <div class="w-full h-full flex-shrink-0 relative">
-                                <img src="imagenes/project1-01.jpg" alt="Branding 2" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050b1e] via-transparent to-transparent opacity-90 pointer-events-none"></div>
-                            </div>
-                        </div>
-                        <button onclick="slideRelative(this, -1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-left text-xl"></i></button>
-                        <button onclick="slideRelative(this, 1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600 hover:scale-110 z-30 cursor-pointer transition-all opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"><i class="ph-bold ph-caret-right text-xl"></i></button>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 z-30 pointer-events-none">
-                        <div class="flex justify-between items-end">
-                            <div class="pointer-events-auto">
-                                <div class="flex gap-2 mb-3">
-                                    <span class="px-2.5 py-1 rounded bg-violet-500/20 border border-violet-500/30 text-[10px] font-bold tracking-wider text-violet-300 uppercase">WEB</span>
-                                </div>
-                                <h3 class="text-2xl font-bold text-white mb-2">Freelancer</h3>
-                                <p class="text-gray-400 text-sm line-clamp-2">Modelado 3D, Escenas, Personajes, Branding y Logotipos.</p>
-                            </div>
-                            <a class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 shadow-lg cursor-pointer hover:bg-primary hover:text-white pointer-events-auto"><i class="ph-bold ph-arrow-up-right text-lg"></i></a>
-                        </div>
-                    </div>
-                </div>
 
 
 
@@ -821,5 +1697,185 @@ de marca. </p>
             counters.forEach(counter => counterObserver.observe(counter));
         });
     </script>
+
+    <script>
+    // Diccionario de traducciones
+    const translations = {
+    es: {
+        nav_inicio: "Inicio",
+        nav_trabajos: "Trabajos",
+        nav_contacto: "Contacto",
+
+        hero_cta: "VER MIS TRABAJOS",
+        hero_roles: "Diseñando experiencias digitales que impactan, unen funcionalidad con estética y elevan marcas al siguiente nivel",
+
+        soluciones: "Soluciones digitales",
+        enfoque_titulo: "Diseño que convierte",
+        enfoque_desc: "Sistema integral de estrategia, tecnología y diseño para escalar tu negocio. Además de ejecutar, aporto criterio y asesoramiento para optimizar cada parte del proceso.",
+
+        valor_diferencial: "VALOR DIFERENCIAL",
+
+        feature_ui: "Diseño UI/UX y Web",
+        feature_ui_desc: "Desarrollo sitios funcionales y de alto rendimiento (Framer, HTML/CSS) e identidades visuales impactantes.",
+
+        feature_ads: "Tráfico y Adquisición",
+        feature_ads_desc: "Escalo campañas rentables en Meta y TikTok Ads para e-commerce, real estate y editorial, testeando creatividades para bajar el costo por adquisición (CPA).",
+
+
+        feature_cro: "E-Commerce y CRO",
+        feature_cro_desc: "Optimización de tiendas online. Implemento mejoras técnicas y estructuro paginas de venta para maximizar conversiones.",
+
+        feature_exec: "Ejecución y Puntualidad",
+        feature_exec_desc: "Respeto total por los plazos acordados. Organización estricta de las etapas de trabajo para garantizar que cada proyecto y campaña se entregue en tiempo y forma.",
+
+        feature_stack: "Stack Tecnológico Integral",
+        feature_stack_desc: "Dominio avanzado de ecosistemas digitales: desde implementación de CRMs hasta herramientas de diseño para anuncios.",
+
+        feature_strategy: "Gestión Estratégica y Comercial",
+        feature_strategy_desc: "Comunicación fluida, transparente y con reportes claros para la toma de decisiones.",
+
+
+
+
+
+        
+    },
+
+    en: {
+        nav_inicio: "Home",
+        nav_trabajos: "Work",
+        nav_contacto: "Contact",
+
+        hero_cta: "VIEW MY WORK",
+        hero_roles: "Designing digital experiences that create impact, combining functionality with aesthetics and elevating brands to the next level",
+
+        soluciones: "Digital Solutions",
+        enfoque_titulo: "Design that converts",
+        enfoque_desc: "A complete system of strategy, technology, and design to scale your business. Beyond execution, I provide strategic thinking and guidance to optimize every stage.",
+
+        valor_diferencial: "DIFFERENTIAL VALUE",
+
+        feature_ui: "UI/UX & Web Design",
+        feature_ui_desc: "I build high-performance websites (Framer, HTML/CSS) and impactful visual identities.",
+
+        Experiencias: "Digital Experiences",
+
+        feature_ads: "Traffic & Acquisition",
+        feature_ads_desc: "I scale profitable campaigns on Meta and TikTok Ads, testing creatives to reduce cost per acquisition (CPA).",
+
+        feature_cro: "E-Commerce & CRO",
+        feature_cro_desc: "Online store optimization. I implement technical improvements and structure landing pages focused on maximizing conversions.",
+
+        feature_exec: "Execution & Reliability",
+        feature_exec_desc: "Strict adherence to deadlines. Organized workflows to ensure every project and campaign is delivered on time.",
+
+        feature_stack: "Full Tech Stack",
+        feature_stack_desc: "Advanced knowledge of digital ecosystems: from CRM implementation to creative tools for ads.",
+
+        feature_strategy: "Strategic & Commercial Management",
+        feature_strategy_desc: "Clear, transparent communication with actionable reporting for decision-making.",
+
+        portfolio_tag: "PORTFOLIO",
+        portfolio_title: "Case Studies & Recent Projects",
+
+        ver_mas: "View more",
+
+                campañas: "High-impact, high-speed launch campaigns. E-commerce strategy execution.",
+        Reducción: "Drastic reduction of cost per acquisition (CPA) through iterative testing of creatives and budget optimization in Meta Ads for the publishing sector.",
+
+        hago:"what i do",
+
+        sobre_mi: "ABOUT ME",
+        sobre_desc: "I am a multidisciplinary designer focused on design, content, and marketing.",
+
+
+       enfoque_linea1: "Design with purpose",
+    enfoque_linea2: "driven by intention.",
+
+    }
+};
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const langToggleBtn = document.getElementById("lang-toggle");
+        
+        // Revisar si ya había un idioma elegido antes
+        let currentLang = localStorage.getItem("preferredLang") || "es";
+        
+        const applyTranslations = (lang) => {
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            
+            // Cambiar el texto del botón
+langToggleBtn.innerHTML = lang === "es" ? "🇦🇷 ES" : "🇺🇸 EN";            localStorage.setItem("preferredLang", lang);
+        };
+
+        // Aplicar al cargar la página
+        applyTranslations(currentLang);
+
+        // Evento de clic en el botón
+        langToggleBtn.addEventListener("click", () => {
+            currentLang = currentLang === "es" ? "en" : "es";
+            applyTranslations(currentLang);
+        });
+    });
+    
+</script>
+
+
+<div id="lightbox" class="fixed inset-0 bg-black/90 hidden items-center justify-center z-50">
+
+    <!-- BOTON CERRAR -->
+    <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-3xl z-50">
+        &times;
+    </button>
+
+    <!-- IMAGEN -->
+    <img id="lightbox-img" class="max-w-[90%] max-h-[90%] object-contain rounded-xl shadow-2xl">
+
+    <!-- FLECHAS -->
+    <button onclick="changeImage(-1)" class="absolute left-6 text-white text-3xl">
+        ‹
+    </button>
+
+    <button onclick="changeImage(1)" class="absolute right-6 text-white text-3xl">
+        ›
+    </button>
+
+</div>
+
+<script>
+let currentImages = [];
+let currentIndex = 0;
+
+function openLightbox(button) {
+    const card = button.closest('.project-card');
+    const imgs = card.querySelectorAll('.slider-track img');
+
+    currentImages = Array.from(imgs).map(img => img.src);
+    currentIndex = 0;
+
+    document.getElementById('lightbox-img').src = currentImages[currentIndex];
+    document.getElementById('lightbox').classList.remove('hidden');
+    document.getElementById('lightbox').classList.add('flex');
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.add('hidden');
+    document.getElementById('lightbox').classList.remove('flex');
+}
+
+function changeImage(direction) {
+    currentIndex += direction;
+
+    if (currentIndex < 0) currentIndex = currentImages.length - 1;
+    if (currentIndex >= currentImages.length) currentIndex = 0;
+
+    document.getElementById('lightbox-img').src = currentImages[currentIndex];
+}
+</script>
 </body>
 </html>
